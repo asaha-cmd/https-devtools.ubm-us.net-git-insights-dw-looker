@@ -9,7 +9,7 @@ view: product {
     sql: ${TABLE}.row_wid ;;
   }
 
-  dimension: title {
+  dimension: product_title {
     type: string
     sql: ${TABLE}.title ;;
   }
@@ -20,15 +20,15 @@ view: product {
   }
   dimension: product_group {
     type: string
-    sql: ${TABLE}.product_level ;;
+    sql: ${TABLE}.product_group ;;
   }
   dimension: product_network {
     type: string
-    sql: ${TABLE}.product_level ;;
+    sql: ${TABLE}.product_network ;;
   }
   dimension: product_brand {
     type: string
-    sql: ${TABLE}.product_level ;;
+    sql: ${TABLE}.product_brand ;;
   }
 
   dimension: is_event {
