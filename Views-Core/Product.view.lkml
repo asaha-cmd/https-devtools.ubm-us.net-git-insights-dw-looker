@@ -1,7 +1,7 @@
 view: product {
   sql_table_name: cidw.product_dim ;;
 
-  dimension: product_ID {
+  dimension: row_wid {
     primary_key: yes
     hidden:  yes
     description: "Unique ID for each product"

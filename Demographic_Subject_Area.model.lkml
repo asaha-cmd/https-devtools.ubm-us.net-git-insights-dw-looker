@@ -23,8 +23,8 @@ explore: industry_demo_bridge {
 
   join: person {
     type: left_outer
-    fields: [person.count]
-    sql_on: ${industry_demo_fact.person_wid} = ${person.person_ID} ;;
+    fields: [person.number_of_people]
+    sql_on: ${industry_demo_fact.person_wid} = ${person.person_wid} ;;
     relationship: many_to_one
   }
 
@@ -59,8 +59,8 @@ explore:: company_size_demo_bridge {
 
   join: person {
     type: left_outer
-    fields: [person.count]
-    sql_on: ${company_size_demo_fact.person_wid} = ${person.person_ID} ;;
+    fields: [person.number_of_people]
+    sql_on: ${company_size_demo_fact.person_wid} = ${person.person_wid} ;;
     relationship: many_to_one
   }
 
