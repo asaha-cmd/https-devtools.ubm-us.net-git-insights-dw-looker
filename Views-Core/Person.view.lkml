@@ -38,7 +38,7 @@ view: person {
     sql:  CASE WHEN ${TABLE}.valid_email = 'Y' THEN true ELSE false END;;
   }
 
-  dimension: initial_data_source_id {
+  dimension: initial_data_source_wid {
     hidden:  yes
     description: "Initial Data Source ID for each person"
     type: number
@@ -85,6 +85,27 @@ dimension: city {
     group_label: "Address"
     type: string
     sql: ${TABLE}.country ;;
+  }
+
+  dimension: hard_bounced {
+    type: yesno
+    description: "Hard Bounce of Person's Email Address"
+    sql: CASE WHEN ${TABLE}.email_status = 'N' THEN true ELSE false END ;;
+  }
+
+  dimension_group: hard_bounced_modified {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    description: "Hard Bounce Flag Modification"
+    sql: ${TABLE}.email_status_modified_date ;;
   }
 
   measure: number_of_people {
