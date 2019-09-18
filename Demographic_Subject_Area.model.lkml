@@ -6,18 +6,20 @@ include: "Views-Demo_Facts/*.view.lkml"
 label: "Demographics"
 
 
-explore: industry_demo_bridge {
+explore: industry_demographics {
+  from: industry_demo_bridge
+  description: "Audience Group Based Industry Demographics"
   join: industry_demo_fact {
     type:left_outer
     fields: []
-    sql_on: ${industry_demo_bridge.industry_demo_wid} = ${industry_demo_fact.row_wid};;
+    sql_on: ${industry_demographics.industry_demo_wid} = ${industry_demo_fact.row_wid};;
     relationship:one_to_many
   }
 
   join: industry_value_dim {
     type: left_outer
     fields: [industry_value_dim.standard_name, industry_value_dim.original_name]
-    sql_on:  ${industry_demo_bridge.industry_value_wid} = ${industry_value_dim.row_wid} ;;
+    sql_on:  ${industry_demographics.industry_value_wid} = ${industry_value_dim.row_wid} ;;
     relationship: one_to_many
   }
 
@@ -41,18 +43,20 @@ explore: industry_demo_bridge {
   }
 }
 
-explore:: company_size_demo_bridge {
+explore:: company_size_demographics {
+  from: company_size_demo_bridge
+  description: "Audience Group Based Company Size Demographics"
   join: company_size_demo_fact {
     type:left_outer
     fields: []
-    sql_on: ${company_size_demo_bridge.company_size_demo_wid} = ${company_size_demo_fact.row_wid};;
+    sql_on: ${company_size_demographics.company_size_demo_wid} = ${company_size_demo_fact.row_wid};;
     relationship:one_to_many
   }
 
   join: company_size_value_dim {
     type: left_outer
     fields: [company_size_value_dim.standard_name, company_size_value_dim.original_name]
-    sql_on:  ${company_size_demo_bridge.company_size_value_wid} = ${company_size_value_dim.row_wid} ;;
+    sql_on:  ${company_size_demographics.company_size_value_wid} = ${company_size_value_dim.row_wid} ;;
     relationship: one_to_many
   }
 
