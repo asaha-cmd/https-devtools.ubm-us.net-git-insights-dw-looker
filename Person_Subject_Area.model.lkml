@@ -7,7 +7,7 @@ label: "People"
 explore: person {
   join: data_source {
     relationship: one_to_one
-    sql_on: ${person.initial_data_source_id} = ${data_source.row_wid} ;;
+    sql_on: ${person.initial_data_source_wid} = ${data_source.row_wid} ;;
   }
 
   join: creation_day_dim {
@@ -64,33 +64,10 @@ explore: person_audience_group_membership {
     relationship: one_to_one
     sql_on: ${person_audience_group_membership.product_wid} = ${product.row_wid} ;;
   }
-}
-
-view: audience_group_membership {
-  sql_table_name: cidw.audience_group_membership_fact ;;
-  dimension: audience_group_wid {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.audience_group_wid ;;
-  }
-  dimension: person_wid {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.person_wid ;;
-  }
-  dimension: data_source_wid {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.data_source_wid ;;
-  }
-  dimension: product_wid {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.product_wid ;;
-  }
-  dimension: membership_date_wid {
-    hidden: yes
-    type: number
-    sql: ${TABLE}.membership_date_wid ;;
+  join: audience_membership_data_source {
+    from: data_source
+    type: left_outer
+    relationship: one_to_one
+    sql_on: ${person_audience_group_membership.data_source_wid} = ${audience_membership_data_source.row_wid} ;;
   }
 }
