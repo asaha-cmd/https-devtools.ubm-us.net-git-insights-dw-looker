@@ -34,12 +34,11 @@ explore: industry_demo_bridge {
     sql_on:  ${industry_demo_fact.modified_date_wid} = ${industry_day_dim.row_wid} ;;
     relationship: one_to_one
   }
-  #join: audience_group {
-  #  from:  audience_group_dim
-  #  type: left_outer
-  #  sql_on: ${industry_measure.audience_group_wid} = ${audience_group.row_wid} ;;
-  #  relationship: many_to_one
-  #}
+  join: audience_group {
+    type: left_outer
+    sql_on: ${industry_demo_fact.audience_group_wid} = ${audience_group.row_wid} ;;
+    relationship: many_to_one
+  }
 }
 
 explore:: company_size_demo_bridge {
@@ -71,10 +70,9 @@ explore:: company_size_demo_bridge {
     relationship: one_to_one
   }
 
-  #join: audience_group {
-  #  from:  audience_group_dim
-  #  type: left_outer
-  #  sql_on: ${company_size_measure.audience_group_wid} = ${audience_group.row_wid} ;;
-  #  relationship: many_to_one
-  #}
+  join: audience_group {
+    type: left_outer
+    sql_on: ${company_size_demo_fact.audience_group_wid} = ${audience_group.row_wid} ;;
+    relationship: many_to_one
+  }
 }
