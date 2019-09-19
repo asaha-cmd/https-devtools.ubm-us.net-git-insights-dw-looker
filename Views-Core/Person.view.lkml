@@ -26,16 +26,26 @@ view: person {
   }
 
   dimension: email_address {
-    hidden: yes
     description: "Email Address"
     type: string
     sql: ${TABLE}.email_address ;;
+    required_access_grants: [can_access_email_address]
   }
 
   dimension: is_email_valid {
     description: "Yes/No whether email address is considered valid"
     type: yesno
     sql:  CASE WHEN ${TABLE}.valid_email = 'Y' THEN true ELSE false END;;
+  }
+
+  dimension: company {
+    type: string
+    sql: ${TABLE}.company ;;
+  }
+
+  dimension: email_address_domain {
+    type: string
+    sql: ${TABLE}.email_domain ;;
   }
 
   dimension: initial_data_source_wid {
@@ -82,9 +92,13 @@ dimension: city {
     sql: ${TABLE}.postal_code ;;
   }
   dimension: country {
-    group_label: "Address"
     type: string
     sql: ${TABLE}.country ;;
+  }
+
+  dimension: supressed {
+    type: yesno
+    sql:  CASE WHEN ${TABLE}.not_suppressed = 'Y' THEN true ELSE false END;;
   }
 
   dimension: hard_bounced {

@@ -5,6 +5,11 @@ include: "Views-EmailActivity/*.view.lkml"
 
 label: "Email Activity"
 
+access_grant: can_access_email_address {
+  user_attribute: can_access_email_address
+  allowed_values: [ "true" ]
+}
+
 explore: email_send {
   from: fact_email_send
 

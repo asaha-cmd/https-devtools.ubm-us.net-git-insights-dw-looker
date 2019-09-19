@@ -1,8 +1,11 @@
 connection: "production_redshift_-_informatica_user"
-
 include: "Views-Core/*.view.lkml"
-
 label: "People"
+
+access_grant: can_access_email_address {
+  user_attribute: can_access_email_address
+  allowed_values: [ "true" ]
+}
 
 explore: person {
   join: data_source {
