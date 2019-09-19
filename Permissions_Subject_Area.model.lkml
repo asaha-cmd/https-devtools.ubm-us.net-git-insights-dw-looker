@@ -6,20 +6,48 @@ access_grant: can_access_email_address {
   allowed_values: [ "true" ]
 }
 
-#include: "*.view.lkml"                       # include all views in this project
-# include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
+include: "Views-Core/*.view.lkml"
+include: "Views-EmailActivity/*.view.lkml"
+include: "Views-Permissions/*.view.lkml"
 
-# # Select the views that should be a part of this model,
-# # and define the joins that connect them together.
-#
-# explore: order_items {
-#   join: orders {
-#     relationship: many_to_one
-#     sql_on: ${orders.id} = ${order_items.order_id} ;;
-#   }
-#
-#   join: users {
-#     relationship: many_to_one
-#     sql_on: ${users.id} = ${orders.user_id} ;;
-#   }
-# }
+label: "Email Permissions"
+
+explore: global_permissions {
+  from: fact_global_permission
+  join: product {
+    view_label: "Business Level Group"
+    type: left_outer
+    fields: [product.product_title]
+    sql_on: ${global_permissions.brand_wid} = ${product.row_wid} ;;
+    relationship: many_to_one
+  }
+  #join: country {
+  #  type: left_outer
+  #  fields: [country_name]
+  #  sql_on: ${global_permissions.country_wid} = ${country.row_wid} ;;
+  #  relationship: many_to_one
+  #}
+
+  join: permission_date {
+    view_label: "Permission Created Date"
+    from:  day_dim
+    type: left_outer
+    sql_on: ${global_permissions.permission_date_wid} = ${permission_date.row_wid} ;;
+    relationship: many_to_one
+  }
+
+  join: person {
+    type: left_outer
+    sql_on: ${global_permissions.person_wid} = ${person.person_wid} ;;
+    relationship: many_to_one
+  }
+
+#  join: email_group {
+#    type:left_outer
+#    from: dim_email_group
+#    sql_on: ${global_permissions.} = ${industry_demo_fact.row_wid};;
+#    relationship:many_to_one
+#  }
+
+
+}
