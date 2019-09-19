@@ -86,7 +86,7 @@ explore: event_registration_passes {
   from:  event_reg_pass_fact
 
   join: event_pass_dim {
-    view_label: "Passes Detail"
+    view_label: "Event Registration Passes Detail"
     relationship: many_to_one
     sql_on: ${event_registration_passes.event_pass_wid} = ${event_pass_dim.row_wid} ;;
   }
