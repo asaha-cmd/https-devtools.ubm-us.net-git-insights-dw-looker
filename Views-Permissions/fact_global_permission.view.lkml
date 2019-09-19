@@ -71,7 +71,7 @@ view: fact_global_permission {
   dimension: third_party_flag {
     description: "Is the user opted out of third party emails"
     type: yesno
-    sql:  CASE WHEN ${TABLE}.third_party_flag = 'Y' THEN true WHEN ELSE false END;;
+    sql:  CASE WHEN ${TABLE}.third_party_flag = 'Y' THEN true ELSE false END;;
     }
 
   measure: global_count {
