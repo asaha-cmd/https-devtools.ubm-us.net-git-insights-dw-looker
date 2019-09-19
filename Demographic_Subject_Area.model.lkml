@@ -80,3 +80,49 @@ explore:: company_size_demographics {
     relationship: many_to_one
   }
 }
+
+explore: historic_demographics {
+  from: fact_demographics_history
+  description: "Full Historic Demographics"
+  join: bridge_demographics_history {
+    type: left_outer
+    #fields: []
+    sql_on: ${bridge_demographics_history.demographic_wid} = ${historic_demographics.row_wid} ;;
+    relationship: one_to_many
+  }
+  join: annual_budget {
+    from: annual_budget_value_dim
+    type: left_outer
+    sql_on: ${bridge_demographics_history.demographic_value_wid} = ${annual_budget.row_wid} and ${bridge_demographics_history.demographic} = 'ANNUAL_BUDGET'  ;;
+    relationship: many_to_one
+  }
+  join: company_revenue {
+    from: company_revenue_value_dim
+    type: left_outer
+    sql_on: ${bridge_demographics_history.demographic_value_wid} = ${company_revenue.row_wid} and ${bridge_demographics_history.demographic} = 'COMPANY_REVENUE'  ;;
+    relationship: many_to_one
+  }
+  join: job_function {
+    from: job_function_value_dim
+    type: left_outer
+    sql_on: ${bridge_demographics_history.demographic_value_wid} = ${job_function.row_wid} and ${bridge_demographics_history.demographic} = 'JOB_FUNCTION'  ;;
+    relationship: many_to_one
+  }
+  join: job_level {
+    from: job_level_value_dim
+    type: left_outer
+    sql_on: ${bridge_demographics_history.demographic_value_wid} = ${job_level.row_wid} and ${bridge_demographics_history.demographic} = 'JOB_LEVEL'  ;;
+    relationship: many_to_one
+  }
+  join: person {
+    type: left_outer
+    fields: [person.number_of_people]
+    sql_on: ${historic_demographics.person_wid} = ${person.person_wid} ;;
+    relationship: many_to_one
+  }
+  join: audience_group {
+    type: left_outer
+    sql_on: ${historic_demographics.audience_group_wid} = ${audience_group.row_wid} ;;
+    relationship: many_to_one
+  }
+}
