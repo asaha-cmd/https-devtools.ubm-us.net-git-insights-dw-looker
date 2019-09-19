@@ -47,6 +47,7 @@ view: asset_dim {
     type: number
     value_format_name: id
     sql: ${TABLE}.warehouse_date_wid ;;
+    hidden:  yes
   }
 
   measure: count {

@@ -12,6 +12,10 @@ view: day_dim {
       week,
       month,
       quarter,
+      week_of_year,
+      month_name,
+      quarter_of_year,
+      day_of_week,
       year
     ]
     sql: ${TABLE}.calendar_date ;;
