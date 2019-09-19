@@ -84,6 +84,7 @@ dimension: city {
   dimension: state {
     group_label: "Address"
     type: string
+    map_layer_name: us_states
     sql: ${TABLE}.state ;;
   }
   dimension: postal_code {
@@ -93,6 +94,7 @@ dimension: city {
   }
   dimension: country {
     type: string
+    map_layer_name: countries
     sql: ${TABLE}.country ;;
   }
 
