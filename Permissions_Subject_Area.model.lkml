@@ -1,5 +1,11 @@
 connection: "production_redshift_-_informatica_user"
 
+
+access_grant: can_access_email_address {
+  user_attribute: can_access_email_address
+  allowed_values: [ "true" ]
+}
+
 #include: "*.view.lkml"                       # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
 

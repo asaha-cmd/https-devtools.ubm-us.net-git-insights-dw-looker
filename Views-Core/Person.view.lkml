@@ -26,10 +26,10 @@ view: person {
   }
 
   dimension: email_address {
-    hidden: yes
     description: "Email Address"
     type: string
     sql: ${TABLE}.email_address ;;
+    required_access_grants: [can_access_email_address]
   }
 
   dimension: is_email_valid {

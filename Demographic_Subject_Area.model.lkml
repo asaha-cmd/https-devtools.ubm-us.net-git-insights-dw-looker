@@ -5,6 +5,10 @@ include: "Views-Demo_Facts/*.view.lkml"
 
 label: "Demographics"
 
+access_grant: can_access_email_address {
+  user_attribute: can_access_email_address
+  allowed_values: [ "true" ]
+}
 
 explore: industry_demographics {
   from: industry_demo_bridge

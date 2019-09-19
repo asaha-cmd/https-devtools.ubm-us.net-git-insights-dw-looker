@@ -5,6 +5,11 @@ include: "Views-EventRegistration/*.view.lkml"
 
 label: "Event Registration"
 
+access_grant: can_access_email_address {
+  user_attribute: can_access_email_address
+  allowed_values: [ "true" ]
+}
+
 explore: event_registration {
   from:event_registration_fact
   label: "Event Registration Details"
