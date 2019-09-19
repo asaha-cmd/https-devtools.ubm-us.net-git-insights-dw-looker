@@ -2,7 +2,7 @@ connection: "production_redshift_-_informatica_user"
 
 include: "Views-Core/*.view.lkml"
 include: "Views-Demo_Facts/*.view.lkml"
-
+include: "historic_demographics.explore.lkml"
 label: "Demographics"
 
 access_grant: can_access_email_address {
@@ -120,7 +120,7 @@ explore: historic_demographics {
   }
   join: person {
     type: left_outer
-    fields: [person.number_of_people]
+    fields: [person.number_of_people, person.person_wid]
     sql_on: ${historic_demographics.person_wid} = ${person.person_wid} ;;
     relationship: many_to_one
   }
