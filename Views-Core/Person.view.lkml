@@ -38,6 +38,16 @@ view: person {
     sql:  CASE WHEN ${TABLE}.valid_email = 'Y' THEN true ELSE false END;;
   }
 
+  dimension: company {
+    type: string
+    sql: ${TABLE}.company ;;
+  }
+
+  dimension: email_address_domain {
+    type: string
+    sql: ${TABLE}.email_domain ;;
+  }
+
   dimension: initial_data_source_wid {
     hidden:  yes
     description: "Initial Data Source ID for each person"
@@ -82,9 +92,13 @@ dimension: city {
     sql: ${TABLE}.postal_code ;;
   }
   dimension: country {
-    group_label: "Address"
     type: string
     sql: ${TABLE}.country ;;
+  }
+
+  dimension: supressed {
+    type: yesno
+    sql:  CASE WHEN ${TABLE}.not_suppressed = 'Y' THEN true ELSE false END;;
   }
 
   dimension: hard_bounced {
