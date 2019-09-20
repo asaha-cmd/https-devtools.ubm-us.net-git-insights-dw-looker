@@ -1,5 +1,5 @@
-include: "Views-Core/*.view.lkml"
-include: "Views-Demo_Facts/*.view.lkml"
+include: "/Views-Core/*.view.lkml"
+include: "/Views-Demo_Facts/*.view.lkml"
 
 label: "Historic Demographics"
 

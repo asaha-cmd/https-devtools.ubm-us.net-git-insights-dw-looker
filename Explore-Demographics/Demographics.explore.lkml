@@ -1,14 +1,6 @@
-connection: "production_redshift_-_informatica_user"
 
-include: "Views-Core/*.view.lkml"
-include: "Views-Demo_Facts/*.view.lkml"
-include: "historic_demographics.explore.lkml"
-label: "Demographics"
-
-access_grant: can_access_email_address {
-  user_attribute: can_access_email_address
-  allowed_values: [ "true" ]
-}
+include: "/Views-Core/*.view.lkml"
+include: "/Views-Demo_Facts/*.view.lkml"
 
 explore: industry_demographics {
   from: industry_demo_bridge

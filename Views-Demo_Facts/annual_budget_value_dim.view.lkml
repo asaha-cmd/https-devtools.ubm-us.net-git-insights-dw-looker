@@ -39,7 +39,8 @@ view: annual_budget_value_dim {
     sql: ${TABLE}.standard_name ;;
   }
 
-  measure: count {
+  measure: term_count {
+    description: "Count of Demographic values."
     type: count
     drill_fields: [standard_name, original_name]
   }

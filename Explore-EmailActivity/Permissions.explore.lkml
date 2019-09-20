@@ -1,16 +1,8 @@
-connection: "production_redshift_-_informatica_user"
 
 
-access_grant: can_access_email_address {
-  user_attribute: can_access_email_address
-  allowed_values: [ "true" ]
-}
-
-include: "Views-Core/*.view.lkml"
-include: "Views-EmailActivity/*.view.lkml"
-include: "Views-Permissions/*.view.lkml"
-
-label: "Email Permissions"
+include: "/Views-Core/*.view.lkml"
+include: "/Views-EmailActivity/*.view.lkml"
+include: "/Views-Permissions/*.view.lkml"
 
 explore: global_permission {
   from: fact_global_permission
