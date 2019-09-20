@@ -99,9 +99,9 @@ dimension: city {
     sql: ${TABLE}.country ;;
   }
 
-  dimension: supressed {
+  dimension: not_supressed {
     type: yesno
-    sql:  CASE WHEN ${TABLE}.not_suppressed = 'Y' THEN true ELSE false END;;
+    sql:  CASE WHEN ${TABLE}.not_suppressed = 'N' THEN true ELSE false END;;
   }
 
   dimension: hard_bounced {
@@ -123,6 +123,10 @@ dimension: city {
     ]
     description: "Hard Bounce Flag Modification"
     sql: ${TABLE}.email_status_modified_date ;;
+  }
+
+  dimension: pending_delete {
+    type:  string
   }
 
   measure: number_of_people {

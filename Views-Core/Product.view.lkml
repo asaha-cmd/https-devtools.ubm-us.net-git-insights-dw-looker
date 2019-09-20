@@ -44,4 +44,71 @@ view: product {
     description: "Event Code"
     sql: ${TABLE}.event_code ;;
   }
+
+  dimension: currency_code {
+    type: string
+    sql: ${TABLE}.currency_code ;;
+  }
+
+  dimension: currency_multiplier {
+    type: number
+    sql: ${TABLE}.currency_multiplier ;;
+  }
+
+  dimension: venue_address_line_1 {
+    type: string
+    group_label: "Venue Address"
+    sql: ${TABLE}.venue_address_line_1 ;;
+  }
+
+  dimension: venue_address_line_2 {
+    type: string
+    group_label: "Venue Address"
+    sql: ${TABLE}.venue_address_line_2 ;;
+  }
+
+  dimension: venue_city {
+    type: string
+    group_label: "Venue Address"
+    sql: ${TABLE}.venue_city ;;
+  }
+
+  dimension: venue_country {
+    type: string
+    group_label: "Venue Address"
+    sql: ${TABLE}.venue_country ;;
+  }
+
+  dimension: venue_name {
+    type: string
+    group_label: "Venue Address"
+    sql: ${TABLE}.venue_name ;;
+  }
+
+  dimension: venue_postal_code {
+    type: string
+    group_label: "Venue Address"
+    sql: ${TABLE}.venue_postal_code ;;
+  }
+
+  dimension: venue_state {
+    type: string
+    group_label: "Venue Address"
+    sql: ${TABLE}.venue_state ;;
+  }
+
+  dimension: end_date_wid {
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.end_date_wid ;;
+    hidden:  yes
+  }
+
+  dimension: start_date_wid {
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.start_date_wid ;;
+    hidden:  yes
+  }
+
 }
