@@ -92,6 +92,7 @@ dimension: city {
     sql: ${TABLE}.postal_code ;;
   }
   dimension: country {
+    group_label: "Address"
     type: string
     sql: ${TABLE}.country ;;
   }
