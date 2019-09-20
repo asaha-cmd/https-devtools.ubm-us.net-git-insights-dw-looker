@@ -1,5 +1,5 @@
-view: fact_email_group_permission {
-  sql_table_name: cidw.fact_email_group_permission ;;
+view: fact_permission_email_group {
+  sql_table_name: cidw.fact_permission_email_group ;;
 
   dimension: row_wid {
     type: number

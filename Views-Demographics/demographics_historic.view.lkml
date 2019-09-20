@@ -1,4 +1,4 @@
-view: historic_demographic {
+view: demographics_historic {
   derived_table: {
     sql: select * from cidw.fact_demographics_history
 left join (select demographic_wid, demographic_value_wid as annual_budget_wid from cidw.bridge_demographics_history where demographic = 'ANNUAL_BUDGET') annual_budget on row_wid = annual_budget.demographic_wid
