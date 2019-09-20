@@ -149,8 +149,14 @@ view: fact_engagement {
     sql: ${TABLE}.site_wid ;;
   }
 
-  measure: count {
+  measure: engagement_count {
     type: count
     drill_fields: [site_name, asset_name, product_name, brand_name]
+  }
+
+  measure: distinct_engaged_people {
+    type:  count_distinct
+    sql_distinct_key: ${person_wid} ;;
+    sql: ${person_wid} ;;
   }
 }

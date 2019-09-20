@@ -18,6 +18,20 @@ explore: event_registration {
     sql_on: ${event_registration.product_wid} = ${product.row_wid} ;;
   }
 
+  join: event_start_date {
+    from:day_dim
+    view_label: "Product - Start Date"
+    relationship: one_to_one
+    sql_on: ${event_start_date.row_wid} = ${product.start_date_wid} ;;
+  }
+
+  join: event_end_date {
+    from:day_dim
+    view_label: "Product - End Date"
+    relationship: one_to_one
+    sql_on: ${event_end_date.row_wid} = ${product.end_date_wid} ;;
+  }
+
   join: registration_date {
     from: day_dim
     view_label: "Event Registration Date"
