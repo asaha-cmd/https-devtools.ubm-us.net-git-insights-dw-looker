@@ -8,3 +8,4 @@ access_grant: can_access_email_address {
 include: "/Explore-People/*.explore.lkml"
 include: "/Explore-EventRegistration/*.explore.lkml"
 include: "/Explore-EmailActivity/*.explore.lkml"
+include: "/Explore-OnlineActivity/*.explore.lkml"

@@ -1,21 +1,10 @@
-connection: "production_redshift_-_informatica_user"
-
-include: "Views-Core/*.view.lkml"
-include: "Views-OnlineActivity/*.view.lkml"
-
-
-
-label: "Online Activity"
-
-access_grant: can_access_email_address {
-  user_attribute: can_access_email_address
-  allowed_values: [ "true" ]
-}
+include: "/Views-Core/*.view.lkml"
+include: "/Views-OnlineActivity/*.view.lkml"
 
 explore: Online_Activity {
   from: Online_Activity
   label: "Online Activity"
-
+  description: "Online activity from NG, Eloqua CDO, historical data"
 
   join: person {
     type: inner
@@ -23,10 +12,10 @@ explore: Online_Activity {
     sql_on: ${Online_Activity.person_wid} = ${person.person_wid} ;;
   }
   join: asset_dim {
-      type:  inner
-      view_label: "Online Asset"
-      relationship: many_to_one
-      sql_on: ${Online_Activity.asset_wid} = ${asset_dim.row_wid} ;;
+    type:  inner
+    view_label: "Online Asset"
+    relationship: many_to_one
+    sql_on: ${Online_Activity.asset_wid} = ${asset_dim.row_wid} ;;
   }
 
   join: product {
@@ -36,10 +25,10 @@ explore: Online_Activity {
   }
 
   join: day_dim  {
-      relationship: one_to_one
-      view_label: "Online Activity Date"
-      sql_on: ${Online_Activity.activity_date_wid} =${day_dim.row_wid} ;;
-    }
+    relationship: one_to_one
+    view_label: "Online Activity Date"
+    sql_on: ${Online_Activity.activity_date_wid} =${day_dim.row_wid} ;;
+  }
 
   join: marketing_code {
     from: activity_code_dim
