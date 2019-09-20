@@ -1,4 +1,4 @@
-view: historic_demographic_bridge {
+view: demographics_historic_bridge {
   derived_table: {
     sql: select row_wid as demographic_wid
       , case when demographic = 'ANNUAL_BUDGET' then  demographic_value_wid else '0'END as annual_budget_wid
