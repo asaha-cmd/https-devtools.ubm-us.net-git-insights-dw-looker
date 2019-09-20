@@ -22,51 +22,62 @@ view: historic_demographic_bridge {
 
   dimension: demographic_wid {
     type: number
+    primary_key: yes
+    hidden: yes
     sql: ${TABLE}.demographic_wid ;;
   }
 
   dimension: annual_budget_wid {
     type: number
+    hidden: yes
     sql: ${TABLE}.annual_budget_wid ;;
   }
 
   dimension: company_revenue_wid {
     type: number
+    hidden: yes
     sql: ${TABLE}.company_revenue_wid ;;
   }
 
   dimension: company_size_wid {
     type: number
+    hidden: yes
     sql: ${TABLE}.company_size_wid ;;
   }
 
   dimension: industry_wid {
     type: number
+    hidden: yes
     sql: ${TABLE}.industry_wid ;;
   }
 
   dimension: job_function_wid {
     type: number
+    hidden: yes
     sql: ${TABLE}.job_function_wid ;;
   }
 
   dimension: job_level_wid {
     type: number
+    hidden: yes
     sql: ${TABLE}.job_level_wid ;;
   }
 
   dimension: product_interest_wid {
     type: number
+    hidden: yes
     sql: ${TABLE}.product_interest_wid ;;
   }
 
   dimension: purchase_influence_wid {
     type: number
+    hidden: yes
     sql: ${TABLE}.purchase_influence_wid ;;
   }
 
   dimension: purchase_role_wid {
     type: number
+    hidden: yes
     sql: ${TABLE}.purchase_role_wid ;;
   }
 
