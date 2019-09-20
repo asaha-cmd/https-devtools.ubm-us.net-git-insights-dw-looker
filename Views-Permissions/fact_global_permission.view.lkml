@@ -1,5 +1,5 @@
-view: fact_permission_global {
-  sql_table_name: cidw.fact_permission_global ;;
+view: fact_global_permission {
+  sql_table_name: cidw.fact_global_permission ;;
 
   dimension: brand_wid {
     type: number

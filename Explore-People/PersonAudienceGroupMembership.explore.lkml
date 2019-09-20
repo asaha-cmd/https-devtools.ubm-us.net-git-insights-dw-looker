@@ -48,10 +48,10 @@ explore: person_audience_group_membership {
     relationship: one_to_one
     sql_on: ${person_audience_group_membership.data_source_wid} = ${audience_membership_data_source.row_wid} ;;
   }
-  join: fact_permission_global {
+  join: fact_global_permission {
     view_label: "Global Opt-Out"
     type: left_outer
     relationship: one_to_one
-    sql_on: ${person.person_wid} =  ${fact_permission_global.person_wid} AND ${fact_permission_global.permission} = 'Global' ;;
+    sql_on: ${person.person_wid} =  ${fact_global_permission.person_wid} AND ${fact_global_permission.permission} = 'Global' ;;
   }
 }

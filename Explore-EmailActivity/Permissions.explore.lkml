@@ -5,7 +5,7 @@ include: "/Views-EmailActivity/*.view.lkml"
 include: "/Views-Permissions/*.view.lkml"
 
 explore: permission_global {
-  from: fact_permission_global
+  from: fact_global_permission
   join: product {
     view_label: "Business Level Group"
     type: left_outer
@@ -36,7 +36,7 @@ explore: permission_global {
 }
 
 explore: permission_email_group {
-  from: fact_permission_email_group
+  from: fact_email_group_permission
   join: email_group {
     view_label: "Filters"
     from: dim_email_group

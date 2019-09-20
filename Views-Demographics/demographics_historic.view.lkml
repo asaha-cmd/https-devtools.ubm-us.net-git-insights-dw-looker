@@ -1,6 +1,7 @@
 view: demographics_historic {
   derived_table: {
-    sql: select * from cidw.fact_demographics_history
+    sql: select fact_demographics_history.*, annual_budget_wid, company_revenue_wid, company_size_wid, industry_wid, job_function_wid,
+              job_level_wid, product_interest_wid, purchase_influence_wid, purchase_role_wid from cidw.fact_demographics_history
 left join (select demographic_wid, demographic_value_wid as annual_budget_wid from cidw.bridge_demographics_history where demographic = 'ANNUAL_BUDGET') annual_budget on row_wid = annual_budget.demographic_wid
 left join (select demographic_wid, demographic_value_wid as company_revenue_wid from cidw.bridge_demographics_history where demographic = 'COMPANY_REVENUE') company_revenue on row_wid = company_revenue.demographic_wid
 left join (select demographic_wid, demographic_value_wid as company_size_wid from cidw.bridge_demographics_history where demographic = 'COMPANY_SIZE') company_size on row_wid = company_size.demographic_wid
@@ -11,6 +12,8 @@ left join (select demographic_wid, demographic_value_wid as product_interest_wid
 left join (select demographic_wid, demographic_value_wid as purchase_influence_wid from cidw.bridge_demographics_history where demographic = 'PURCHASE_INFLUENCE') purchase_influence on row_wid = purchase_influence.demographic_wid
 left join (select demographic_wid, demographic_value_wid as purchase_role_wid from cidw.bridge_demographics_history where demographic = 'PURCHASE_ROLE') purchase_role on row_wid = purchase_role.demographic_wid
        ;;
+    datagroup_trigger: basic_cache
+    distribution_style: all
   }
 
   dimension: audience_group_wid {
