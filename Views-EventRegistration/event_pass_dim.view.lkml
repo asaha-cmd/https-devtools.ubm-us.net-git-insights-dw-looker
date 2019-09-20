@@ -38,8 +38,4 @@ view: event_pass_dim {
     value_format_name: id
     sql: ${TABLE}.row_wid ;;
   }
-
-  measure: count {
-    type: count
-  }
 }
