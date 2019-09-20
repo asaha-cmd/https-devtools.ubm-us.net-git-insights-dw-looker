@@ -60,7 +60,7 @@ explore: event_registration {
   }
 
   join: event_pass_dim {
-    view_label: "Event Registration Passes Detail"
+    view_label: "Event Registration Passes"
     relationship: many_to_one
     sql_on: ${event_reg_pass_fact.event_pass_wid} = ${event_pass_dim.row_wid} ;;
   }

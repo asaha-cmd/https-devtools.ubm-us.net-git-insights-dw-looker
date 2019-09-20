@@ -6,7 +6,7 @@ explore: event_registration_passes {
   description: "Pass details for Event Registrations"
 
   join: event_pass_dim {
-    view_label: "Event Registration Passes Detail"
+    view_label: "Event Registration Passes"
     relationship: many_to_one
     sql_on: ${event_registration_passes.event_pass_wid} = ${event_pass_dim.row_wid} ;;
   }
@@ -24,6 +24,7 @@ explore: event_registration_passes {
   }
 
   join: event_registration_pass_date {
+    view_label: "Event Registration"
     from: day_dim
     type: inner
     relationship: many_to_one

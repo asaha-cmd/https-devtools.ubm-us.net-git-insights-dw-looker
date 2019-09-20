@@ -100,6 +100,20 @@ view: event_registration_fact {
     sql: ${TABLE}.total_collected ;;
   }
 
+  measure: sum_total_collected {
+    type: sum_distinct
+    sql_distinct_key: ${row_wid} ;;
+    sql: ${total_collected} ;;
+    value_format_name: decimal_2
+  }
+
+  measure: average_total_collected {
+    type: average_distinct
+    sql_distinct_key: ${row_wid} ;;
+    sql: ${total_collected} ;;
+    value_format_name: decimal_2
+  }
+
   measure: count {
     type: count
   }
