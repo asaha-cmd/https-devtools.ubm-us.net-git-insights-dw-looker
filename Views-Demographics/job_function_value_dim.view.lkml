@@ -14,10 +14,12 @@ view: job_function_value_dim {
     sql: ${TABLE}.original_code ;;
   }
 
-  dimension: original_name {
-    type: string
-    sql: ${TABLE}.original_name ;;
-  }
+dimension: original_name {
+  label: "Original Value"
+  description: "Value entered or selected by user"
+  type: string
+  sql: ${TABLE}.original_name ;;
+}
 
   dimension: product_wid {
     type: number
@@ -35,9 +37,12 @@ view: job_function_value_dim {
   }
 
   dimension: standard_name {
+    label: "Standardize Value"
+    description: "Mapped value of user entry"
     type: string
     sql: ${TABLE}.standard_name ;;
   }
+
 
   measure: count {
     type: count

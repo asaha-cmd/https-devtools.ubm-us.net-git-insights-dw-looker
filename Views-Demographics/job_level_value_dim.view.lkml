@@ -15,6 +15,8 @@ view: job_level_value_dim {
   }
 
   dimension: original_name {
+    label: "Name from Form"
+    description: "Value entered or selected by user"
     type: string
     sql: ${TABLE}.original_name ;;
   }
@@ -34,6 +36,8 @@ view: job_level_value_dim {
   }
 
   dimension: standard_name {
+    label: "Standardize Value"
+    description: "Mapped value of user entry"
     type: string
     sql: ${TABLE}.standard_name ;;
   }
