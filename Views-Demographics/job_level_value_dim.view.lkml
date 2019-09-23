@@ -24,6 +24,7 @@ view: job_level_value_dim {
   dimension: product_wid {
     type: number
     value_format_name: id
+    hidden: yes
     sql: ${TABLE}.product_wid ;;
   }
 

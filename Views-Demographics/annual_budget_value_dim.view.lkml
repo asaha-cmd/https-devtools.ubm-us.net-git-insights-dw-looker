@@ -14,11 +14,6 @@ view: annual_budget_value_dim {
     sql: ${TABLE}.original_code ;;
   }
 
-  dimension: original_name {
-    type: string
-    sql: ${TABLE}.original_name ;;
-  }
-
   dimension: product_wid {
     type: number
     value_format_name: id
@@ -34,7 +29,30 @@ view: annual_budget_value_dim {
     sql: ${TABLE}.row_wid ;;
   }
 
+  dimension: original_name {
+    label: "Original Value"
+    description: "Value entered or selected by user"
+    type: string
+    sql: ${TABLE}.original_name ;;
+  }
+
   dimension: standard_name {
+    label: "Standardize Value"
+    description: "Mapped value of user entry"
+    type: string
+    sql: ${TABLE}.standard_name ;;
+  }
+
+  dimension: original_annual_budget{
+    label: "Annual Budget Name from Form"
+    description: "Value entered or selected by user"
+    type: string
+    sql: ${TABLE}.original_name ;;
+  }
+
+  dimension: standard_annual_budget {
+    label: "Annual Budget Standardize Value"
+    description: "Mapped value of user entry"
     type: string
     sql: ${TABLE}.standard_name ;;
   }

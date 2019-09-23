@@ -14,14 +14,10 @@ view: product_interests_value_dim {
     sql: ${TABLE}.original_code ;;
   }
 
-  dimension: original_name {
-    type: string
-    sql: ${TABLE}.original_name ;;
-  }
-
   dimension: product_wid {
     type: number
     value_format_name: id
+    hidden: yes
     sql: ${TABLE}.product_wid ;;
   }
 
@@ -33,11 +29,31 @@ view: product_interests_value_dim {
     sql: ${TABLE}.row_wid ;;
   }
 
+  dimension: original_name {
+    label: "Value from Form"
+    description: "Value entered or selected by user"
+    type: string
+    sql: ${TABLE}.original_name ;;
+  }
+
   dimension: standard_name {
     type: string
     sql: ${TABLE}.standard_name ;;
   }
 
+  dimension: original_product_interests {
+    label: "Product Interests Value from Form"
+    description: "Value entered or selected by user"
+    type: string
+    sql: ${TABLE}.original_name ;;
+  }
+
+  dimension: standard_product_interests {
+    label: "Product Interests Standardize Value"
+    description: "Mapped value of user entry"
+    type: string
+    sql: ${TABLE}.standard_name ;;
+  }
   measure: count {
     type: count
     drill_fields: [standard_name, original_name]

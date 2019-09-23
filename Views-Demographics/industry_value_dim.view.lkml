@@ -4,11 +4,13 @@ view: industry_value_dim {
   dimension: code_data_source_wid {
     type: number
     value_format_name: id
+    hidden: yes
     sql: ${TABLE}.code_data_source_wid ;;
   }
 
   dimension: original_code {
     type: string
+    hidden: yes
     sql: ${TABLE}.original_code ;;
   }
 
@@ -22,6 +24,7 @@ view: industry_value_dim {
   dimension: product_wid {
     type: number
     value_format_name: id
+    hidden: yes
     sql: ${TABLE}.product_wid ;;
   }
 

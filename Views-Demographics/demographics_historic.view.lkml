@@ -141,7 +141,7 @@ left join (select demographic_wid, demographic_value_wid as purchase_role_wid fr
   }
 
    measure: demographic_count {
-    type: count_distinct
+    type: count
     description: "Count of Distinct People"
     sql_distinct_key: ${TABLE}.person_wid ;;
   }

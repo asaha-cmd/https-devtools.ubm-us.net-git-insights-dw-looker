@@ -28,12 +28,14 @@ explore: demographic_job_function {
   }
 
   join: job_function_day_dim {
+    view_label: "Job Function"
     from: day_dim
     type: left_outer
     fields: [activity_dates*]
     sql_on:  ${job_function_demo_fact.modified_date_wid} = ${job_function_day_dim.row_wid} ;;
     relationship: one_to_one
   }
+
   join: audience_group {
     view_label: "Job Function"
     type: left_outer

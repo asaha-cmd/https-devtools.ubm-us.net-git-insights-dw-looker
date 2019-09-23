@@ -39,17 +39,16 @@ view: day_dim {
   }
   set: activity_dates {
     fields: [
-      activity_date,
-      activity_week,
-      activity_month,
-      activity_quarter,
-      activity_week_of_year,
-      activity_month_name,
-      activity_quarter_of_year,
-      activity_day_of_week,
-      activity_year
+      calendar_date,
+      calendar_week,
+      calendar_month,
+      calendar_quarter,
+      calendar_week_of_year,
+      calendar_month_name,
+      calendar_quarter_of_year,
+      calendar_day_of_week,
+      calendar_year
     ]
-
   }
   dimension: row_wid {
     type: number
