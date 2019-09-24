@@ -30,28 +30,17 @@ view: annual_budget_value_dim {
   }
 
   dimension: original_name {
-    label: "Original Value"
+    label: "{% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} Value from Form"
+    #label: "Original Value"
     description: "Value entered or selected by user"
     type: string
     sql: ${TABLE}.original_name ;;
   }
 
   dimension: standard_name {
-    label: "Standardize Value"
-    description: "Mapped value of user entry"
-    type: string
-    sql: ${TABLE}.standard_name ;;
-  }
-
-  dimension: original_annual_budget{
-    label: "Annual Budget Name from Form"
-    description: "Value entered or selected by user"
-    type: string
-    sql: ${TABLE}.original_name ;;
-  }
-
-  dimension: standard_annual_budget {
-    label: "Annual Budget Standardize Value"
+    label: "{% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} Standard Value"
     description: "Mapped value of user entry"
     type: string
     sql: ${TABLE}.standard_name ;;
