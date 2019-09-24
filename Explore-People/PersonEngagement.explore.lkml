@@ -1,6 +1,7 @@
 include: "/Views-Core/*.view.lkml"
 
 explore: fact_engagement {
+  group_label: "People"
   label: "Engagement"
   view_label: "Engagement"
   description: "Consildated positive engagement data"

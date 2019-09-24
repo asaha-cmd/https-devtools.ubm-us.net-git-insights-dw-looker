@@ -2,6 +2,8 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-Demographics/*.view.lkml"
 
 explore: demographic_job_function {
+  group_label: "Demographics"
+  label: "Job Function"
   from: job_function_demo_bridge
   description: "Audience Group Based Industry Demographics"
   join: job_function_demo_fact {

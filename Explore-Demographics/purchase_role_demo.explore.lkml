@@ -2,6 +2,8 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-Demographics/*.view.lkml"
 
 explore: demographic_purchase_role {
+  group_label: "Demographics"
+  label: "Purchase Role"
   from: purchase_role_demo_bridge
   description: "Audience Group Based Industry Demographics"
   join: purchase_role_demo_fact {

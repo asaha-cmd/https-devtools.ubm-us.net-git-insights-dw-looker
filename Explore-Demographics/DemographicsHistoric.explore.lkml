@@ -2,6 +2,8 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-Demographics/*.view.lkml"
 
 explore: demographics_historic {
+  group_label: "Demographics"
+  label: "Historic"
   description: "Full Historic Demographics"
 
   join: annual_budget {

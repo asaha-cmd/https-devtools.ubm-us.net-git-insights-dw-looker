@@ -2,6 +2,8 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-Demographics/*.view.lkml"
 
 explore: demographic_product_interests {
+  group_label: "Demographics"
+  label: "Product Interests"
   from: product_interests_demo_bridge
   description: "Audience Group Based Industry Demographics"
   join: product_interests_demo_fact {

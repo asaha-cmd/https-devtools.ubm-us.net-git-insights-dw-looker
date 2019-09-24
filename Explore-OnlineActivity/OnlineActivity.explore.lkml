@@ -2,8 +2,9 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-OnlineActivity/*.view.lkml"
 
 explore: Online_Activity {
+  group_label: "Online Activity"
+  label: "Transactions from Online Activity"
   from: Online_Activity
-  label: "Online Activity"
   description: "Online activity from NG, Eloqua CDO, historical data"
 
   join: person {

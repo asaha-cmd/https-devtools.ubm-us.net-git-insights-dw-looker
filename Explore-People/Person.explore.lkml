@@ -1,6 +1,7 @@
 include: "/Views-Core/*.view.lkml"
 
 explore: person {
+  group_label: "People"
   description: "Base details around a person in the DW"
   join: data_source {
     relationship: one_to_one
@@ -8,7 +9,7 @@ explore: person {
   }
 
   join: creation_day_dim {
-    view_label: "Person Create Date"
+    view_label: "Person Creation Date"
     from:  day_dim
     type: left_outer
     relationship: one_to_one
