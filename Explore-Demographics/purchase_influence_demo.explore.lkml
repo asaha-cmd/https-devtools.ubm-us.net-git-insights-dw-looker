@@ -2,6 +2,8 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-Demographics/*.view.lkml"
 
 explore: demographic_purchase_influence {
+  group_label: "Demographics"
+  label: "Purchase Influence"
   from: purchase_influence_demo_bridge
   description: "Audience Group Based Industry Demographics"
   join: purchase_influence_demo_fact {

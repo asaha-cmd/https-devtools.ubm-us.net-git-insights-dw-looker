@@ -2,6 +2,8 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-Demographics/*.view.lkml"
 
 explore: demographic_annual_budget {
+  group_label: "Demographics"
+  label: "Annual Budget"
   from: annual_budget_demo_bridge
   description: "Audience Group Based Industry Demographics"
   join: annual_budget_demo_fact {

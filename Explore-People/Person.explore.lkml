@@ -1,6 +1,7 @@
 include: "/Views-Core/*.view.lkml"
 
 explore: person {
+  group_label: "People"
   description: "Base details around a person in the DW"
   join: data_source {
     relationship: one_to_one

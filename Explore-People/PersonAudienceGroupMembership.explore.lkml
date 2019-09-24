@@ -3,6 +3,7 @@ include: "/Views-Permissions/*.view.lkml"
 include: "/Explore-People/Person.explore.lkml"
 
 explore: person_audience_group_membership {
+  group_label: "People"
   description: "Audience Group Membership of People"
   from: audience_group_membership
   join: person {

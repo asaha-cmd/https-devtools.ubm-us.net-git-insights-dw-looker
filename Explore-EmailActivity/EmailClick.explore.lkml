@@ -2,8 +2,9 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-EmailActivity/*.view.lkml"
 
 explore: email_click {
+  group_label: "Email Activity"
   from: fact_email_click
-  label: "Email Activity - Click"
+  label: "Click Data"
   description: "Eloqua Email Click Data"
 
   join: email {

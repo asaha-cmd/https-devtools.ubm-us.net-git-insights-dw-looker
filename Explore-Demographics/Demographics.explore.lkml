@@ -3,6 +3,8 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-Demographics/*.view.lkml"
 
 explore: demographic_industry {
+  group_label: "Demographics"
+  label: "Industry"
   from: industry_demo_bridge
   description: "Audience Group Based Industry Demographics"
   join: industry_demo_fact {
@@ -40,6 +42,8 @@ explore: demographic_industry {
 }
 
 explore:: demographic_company_size {
+  group_label: "Demographics"
+  label: "Company Size"
   from: company_size_demo_bridge
   description: "Audience Group Based Company Size Demographics"
   join: company_size_demo_fact {

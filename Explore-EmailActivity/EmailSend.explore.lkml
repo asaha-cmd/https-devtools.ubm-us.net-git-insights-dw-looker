@@ -3,7 +3,8 @@ include: "/Views-EmailActivity/*.view.lkml"
 
 explore: email_send {
   from: fact_email_send
-  label: "Email Activity - Send"
+  group_label: "Email Activity"
+  label: "Send Data"
   description: "Eloqua Email Send Data"
 
   join: email {

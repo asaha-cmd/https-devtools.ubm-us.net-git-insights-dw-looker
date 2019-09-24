@@ -2,6 +2,8 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-Demographics/*.view.lkml"
 
 explore: demographic_company_revenue {
+  group_label: "Demographics"
+  label: "Company Revenue"
   from: company_revenue_demo_bridge
   description: "Audience Group Based Industry Demographics"
   join: company_revenue_demo_fact {

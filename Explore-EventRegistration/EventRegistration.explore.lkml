@@ -2,6 +2,7 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-EventRegistration/*.view.lkml"
 
 explore: event_registration {
+  group_label: "Event Registration"
   from:event_registration_fact
   label: "Event Registration Details"
   description: "Supports exploration and analysis of Event Registration"
