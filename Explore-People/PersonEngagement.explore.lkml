@@ -6,11 +6,12 @@ explore: fact_engagement {
   view_label: "Engagement"
   description: "Consildated positive engagement data"
 
-  join: engagement_date {
+  join: engagement {
+    view_label: "Engagement"
     from: day_dim
     relationship: many_to_one
     type: inner
-    sql_on: ${fact_engagement.engagement_date_wid} = ${engagement_date.row_wid};;
+    sql_on: ${fact_engagement.engagement_date_wid} = ${engagement.row_wid};;
   }
 
   join: person {
