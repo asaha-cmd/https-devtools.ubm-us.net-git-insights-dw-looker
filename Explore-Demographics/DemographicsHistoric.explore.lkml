@@ -10,7 +10,6 @@ explore: demographics_historic {
     view_label: "Demographic"
     from: annual_budget_value_dim
     type: left_outer
-    fields: [annual_budget.standard_annual_budget, annual_budget.original_annual_budget]
     sql_on: ${demographics_historic.annual_budget_wid} = ${annual_budget.row_wid}  ;;
     relationship: many_to_many
   }
