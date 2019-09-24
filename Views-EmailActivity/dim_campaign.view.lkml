@@ -18,7 +18,7 @@ view: dim_campaign {
     sql: ${TABLE}.data_source_wid ;;
   }
 
-  dimension: name {
+  dimension: campaign_name {
     type: string
     sql: ${TABLE}.name ;;
   }
@@ -33,6 +33,6 @@ view: dim_campaign {
 
   measure: count {
     type: count
-    drill_fields: [name]
+    drill_fields: [campaign_name]
   }
 }

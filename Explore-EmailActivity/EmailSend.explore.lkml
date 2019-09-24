@@ -8,21 +8,24 @@ explore: email_send {
   description: "Eloqua Email Send Data"
 
   join: email {
+    view_label: "Email Send"
     from: dim_email
     relationship: one_to_one
     sql_on: ${email.row_wid} = ${email_send.email_wid} ;;
   }
 
   join: campaign {
+    view_label: "Email Send"
     from:  dim_campaign
     relationship: one_to_one
     sql_on: ${campaign.row_wid} = ${email_send.campaign_wid} ;;
   }
 
-  join: send_date {
+  join: send {
+    view_label: "Email Send"
     from: day_dim
     relationship: one_to_one
-    sql_on: ${email_send.activity_date_wid} = ${send_date.row_wid} ;;
+    sql_on: ${email_send.activity_date_wid} = ${send.row_wid} ;;
   }
 
   join: person {
