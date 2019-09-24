@@ -30,32 +30,23 @@ view: product_interests_value_dim {
   }
 
   dimension: original_name {
-    label: "Value from Form"
+    label: "{% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} from Form"
     description: "Value entered or selected by user"
     type: string
     sql: ${TABLE}.original_name ;;
   }
 
   dimension: standard_name {
+    label: "{% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} Standardized Value"
     type: string
     sql: ${TABLE}.standard_name ;;
   }
 
-  dimension: original_product_interests {
-    label: "Product Interests Value from Form"
-    description: "Value entered or selected by user"
-    type: string
-    sql: ${TABLE}.original_name ;;
-  }
-
-  dimension: standard_product_interests {
-    label: "Product Interests Standardize Value"
-    description: "Mapped value of user entry"
-    type: string
-    sql: ${TABLE}.standard_name ;;
-  }
   measure: count {
     type: count
+    hidden: yes
     drill_fields: [standard_name, original_name]
   }
 }

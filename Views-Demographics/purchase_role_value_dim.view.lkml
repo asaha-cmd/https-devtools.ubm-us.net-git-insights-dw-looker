@@ -15,6 +15,8 @@ view: purchase_role_value_dim {
   }
 
   dimension: original_name {
+    label: "{% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} Value from Form"
     type: string
     sql: ${TABLE}.original_name ;;
   }
@@ -35,12 +37,15 @@ view: purchase_role_value_dim {
   }
 
   dimension: standard_name {
+    label: "{% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} Standardized Value"
     type: string
     sql: ${TABLE}.standard_name ;;
   }
 
   measure: count {
     type: count
+    hidden: yes
     drill_fields: [standard_name, original_name]
   }
 }

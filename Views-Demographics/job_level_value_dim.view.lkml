@@ -15,7 +15,8 @@ view: job_level_value_dim {
   }
 
   dimension: original_name {
-    label: "Name from Form"
+    label: "{% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} Value from Form"
     description: "Value entered or selected by user"
     type: string
     sql: ${TABLE}.original_name ;;
@@ -37,7 +38,8 @@ view: job_level_value_dim {
   }
 
   dimension: standard_name {
-    label: "Standardize Value"
+    label: "{% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} Standardized Value"
     description: "Mapped value of user entry"
     type: string
     sql: ${TABLE}.standard_name ;;
@@ -45,6 +47,7 @@ view: job_level_value_dim {
 
   measure: count {
     type: count
+    hidden: yes
     drill_fields: [standard_name, original_name]
   }
 }

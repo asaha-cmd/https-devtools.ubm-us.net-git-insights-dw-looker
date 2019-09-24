@@ -14,11 +14,12 @@ explore: demographic_job_function {
     relationship:one_to_many
   }
 
-  join: job_function_value_dim {
+  join: job_function {
+    from: job_function_value_dim
     view_label: "Job Function"
     type: left_outer
-    fields: [job_function_value_dim.standard_name, job_function_value_dim.original_name]
-    sql_on:  ${demographic_job_function.job_function_value_wid} = ${job_function_value_dim.row_wid} ;;
+    #fields: [job_function_value_dim.standard_name, job_function_value_dim.original_name]
+    sql_on:  ${demographic_job_function.job_function_value_wid} = ${job_function.row_wid} ;;
     relationship: one_to_many
   }
 

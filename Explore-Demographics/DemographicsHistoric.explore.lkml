@@ -3,7 +3,7 @@ include: "/Views-Demographics/*.view.lkml"
 
 explore: demographics_historic {
   group_label: "Demographics"
-  label: "Historic"
+  label: " Historic"
   description: "Full Historic Demographics"
 
   join: annual_budget {
@@ -78,6 +78,7 @@ explore: demographics_historic {
   }
 
   join: historic_day_dim {
+    view_label: "Historic Demographics"
     from: day_dim
     type: left_outer
     sql_on:  ${demographics_historic.created_date_wid} = ${historic_day_dim.row_wid} ;;
@@ -90,6 +91,7 @@ explore: demographics_historic {
     relationship: many_to_one
   }
   join: audience_group {
+    view_label: "Historic Demographics"
     type: left_outer
     sql_on: ${demographics_historic.audience_group_wid} = ${audience_group.row_wid} ;;
     relationship: many_to_one
