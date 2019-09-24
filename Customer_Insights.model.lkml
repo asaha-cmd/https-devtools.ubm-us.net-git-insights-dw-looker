@@ -1,5 +1,7 @@
 connection: "production_redshift_-_informatica_user"
 
+week_start_day: sunday
+
 access_grant: can_access_email_address {
   user_attribute: can_access_email_address
   allowed_values: [ "true" ]

@@ -131,6 +131,26 @@ dimension: city {
     type:  string
   }
 
+
+  dimension: job_title {
+    type:  string
+  }
+
+
+  dimension: job_function {
+    type:  string
+  }
+
+
+  dimension: job_level {
+    type:  string
+  }
+
+
+  dimension: industry {
+    type:  string
+  }
+
   measure: number_of_people {
     type: count
     description: "Count of People"

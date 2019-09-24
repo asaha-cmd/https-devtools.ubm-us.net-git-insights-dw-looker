@@ -8,7 +8,7 @@ explore: person {
   }
 
   join: creation_day_dim {
-    view_label: "Person Create Date"
+    view_label: "Person Creation Date"
     from:  day_dim
     type: left_outer
     relationship: one_to_one
