@@ -50,6 +50,32 @@ view: asset_dim {
     hidden:  yes
   }
 
+  dimension: keyword {
+    type: string
+    sql:
+      CASE
+        when upper(${title}) like upper('% AI %') then 'AI'
+        when upper(${title}) like upper('S%ystem %') then 'System'
+        when upper(${title}) like upper('C%TO %') then 'CTO'
+        when upper(${title}) like upper('% LAN %') then 'LAN'
+        when upper(${title}) like upper('% Data %') then 'Data'
+        when upper(${title}) like upper('% Cloud %') then 'Cloud'
+        when upper(${title}) like upper('% Engineer %') then 'Engineer'
+        when upper(${title}) like upper('% Manager %') then 'Manager'
+        when upper(${title}) like upper('% CIO %') then 'CIO'
+        when upper(${title}) like upper('% Director %') then 'Director'
+        when upper(${title}) like upper('% Development %') then 'Development'
+        when upper(${title}) like upper('% Network %') then 'Network'
+        when upper(${title}) like upper('% Architect %') then 'Architect'
+        when upper(${title}) like upper('% Applications %') then 'Applications'
+        when upper(${title}) like upper('% Infrastructure %') then 'Infrastructure'
+        when upper(${title}) like upper('% Lead %') then 'Lead'
+        when upper(${title}) like upper('% VP %') then 'VP'
+        when upper(${title}) like upper('% Linux %') then 'Linux'
+        when upper(${title}) like upper('% API %') then 'API'
+        when upper(${title}) like upper('% Security %') then 'Security'
+      END;;
+  }
   measure: count {
     type: count
     drill_fields: []
