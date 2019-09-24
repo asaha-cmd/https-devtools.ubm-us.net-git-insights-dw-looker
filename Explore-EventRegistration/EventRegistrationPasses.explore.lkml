@@ -24,12 +24,12 @@ explore: event_registration_passes {
     sql_on: ${event_registration_passes.product_wid} =${product.row_wid};;
   }
 
-  join: event_registration_pass_date {
-    view_label: "Event Registration"
+  join: pass {
+    view_label: "Event Registration Passes"
     from: day_dim
     type: inner
     relationship: many_to_one
-    sql_on: ${event_registration_passes.registration_date_wid} = ${event_registration_pass_date.row_wid} ;;
+    sql_on: ${event_registration_passes.registration_date_wid} = ${pass.row_wid} ;;
   }
 
   join: event_registration {
@@ -38,4 +38,26 @@ explore: event_registration_passes {
     type: inner
     sql_on: ${event_registration.row_wid} = ${event_registration_passes.event_reg_wid} ;;
   }
+
+  join: registration {
+    from: day_dim
+    view_label: "Event Registration"
+    relationship: one_to_one
+    sql_on: ${event_registration.registration_date_wid} = ${registration.row_wid} ;;
+  }
+
+  join: checkin {
+    from: day_dim
+    view_label: "Event Registration"
+    relationship: one_to_one
+    sql_on: ${event_registration.checkedin_date_wid} = ${checkin.row_wid} ;;
+  }
+
+  join: cancellation {
+    view_label: "Event Registration"
+    from:  day_dim
+    relationship: one_to_one
+    sql_on: ${event_registration.cancellation_date_wid} = ${cancellation.row_wid} ;;
+  }
+
 }
