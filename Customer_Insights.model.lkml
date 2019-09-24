@@ -11,6 +11,7 @@ datagroup: basic_cache {
   max_cache_age: "24 hours"
   sql_trigger: SELECT max(warehouse_update_date_wid) FROM cidw.person_dim ;;
 }
+persist_with: basic_cache
 
 include: "/Explore-People/*.explore.lkml"
 include: "/Explore-EventRegistration/*.explore.lkml"
