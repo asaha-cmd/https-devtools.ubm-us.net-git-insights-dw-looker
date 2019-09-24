@@ -8,19 +8,19 @@ explore: person {
     sql_on: ${person.initial_data_source_wid} = ${data_source.row_wid} ;;
   }
 
-  join: creation_day_dim {
-    view_label: "Person Creation Date"
+  join: creation {
+    view_label: "Person"
     from:  day_dim
     type: left_outer
     relationship: one_to_one
-    sql_on: ${creation_day_dim.row_wid} = ${person.created_date_wid} ;;
+    sql_on: ${creation.row_wid} = ${person.created_date_wid} ;;
   }
 
-  join: last_engagement_day_dim {
-    view_label: "Person Last Engagement Date"
+  join: last_engagement {
+    view_label: "Person"
     from:  day_dim
     type: left_outer
     relationship: one_to_one
-    sql_on: ${last_engagement_day_dim.row_wid} = ${person.created_date_wid} ;;
+    sql_on: ${last_engagement.row_wid} = ${person.created_date_wid} ;;
   }
 }

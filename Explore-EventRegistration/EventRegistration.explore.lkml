@@ -19,39 +19,39 @@ explore: event_registration {
     sql_on: ${event_registration.product_wid} = ${product.row_wid} ;;
   }
 
-  join: event_start_date {
+  join: product_start {
+    view_label: "Product"
     from:day_dim
-    view_label: "Product - Start Date"
     relationship: one_to_one
-    sql_on: ${event_start_date.row_wid} = ${product.start_date_wid} ;;
+    sql_on: ${product_start.row_wid} = ${product.start_date_wid} ;;
   }
 
-  join: event_end_date {
+  join: product_end {
+    view_label: "Product"
     from:day_dim
-    view_label: "Product - End Date"
     relationship: one_to_one
-    sql_on: ${event_end_date.row_wid} = ${product.end_date_wid} ;;
+    sql_on: ${product_end.row_wid} = ${product.end_date_wid} ;;
   }
 
-  join: registration_date {
+  join: registration {
     from: day_dim
-    view_label: "Event Registration Date"
+    view_label: "Event Registration"
     relationship: one_to_one
-    sql_on: ${event_registration.registration_date_wid} = ${registration_date.row_wid} ;;
+    sql_on: ${event_registration.registration_date_wid} = ${registration.row_wid} ;;
   }
 
-  join: checkin_date {
+  join: checkin {
     from: day_dim
-    view_label: "Event Checked In Date"
+    view_label: "Event Registration"
     relationship: one_to_one
-    sql_on: ${event_registration.checkedin_date_wid} = ${checkin_date.row_wid} ;;
+    sql_on: ${event_registration.checkedin_date_wid} = ${checkin.row_wid} ;;
   }
 
-  join: cancellation_date {
+  join: cancellation {
+    view_label: "Event Registration"
     from:  day_dim
-    view_label: "Event Cancellation Date"
     relationship: one_to_one
-    sql_on: ${event_registration.cancellation_date_wid} = ${cancellation_date.row_wid} ;;
+    sql_on: ${event_registration.cancellation_date_wid} = ${cancellation.row_wid} ;;
   }
 
   join: promotion_code {
