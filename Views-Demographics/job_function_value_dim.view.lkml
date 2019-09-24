@@ -41,6 +41,7 @@ dimension: original_name {
     description: "Mapped value of user entry"
     type: string
     sql: ${TABLE}.standard_name ;;
+    drill_fields: [original_name]
   }
 
 
