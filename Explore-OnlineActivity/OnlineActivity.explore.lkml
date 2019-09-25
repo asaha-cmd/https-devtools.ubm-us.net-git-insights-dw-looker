@@ -25,10 +25,11 @@ explore: Online_Activity {
     sql_on: ${Online_Activity.product_wid} = ${product.row_wid} ;;
   }
 
-  join: day_dim  {
+  join: activity  {
     relationship: one_to_one
-    view_label: "Online Activity Date"
-    sql_on: ${Online_Activity.activity_date_wid} =${day_dim.row_wid} ;;
+    from: day_dim
+    view_label: "Online Activity"
+    sql_on: ${Online_Activity.activity_date_wid} =${activity.row_wid} ;;
   }
 
   join: marketing_code {

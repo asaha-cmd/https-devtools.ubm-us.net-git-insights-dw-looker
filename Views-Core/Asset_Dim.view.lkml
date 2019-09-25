@@ -75,9 +75,15 @@ view: asset_dim {
         when upper(${title}) like upper('% API %') then 'API'
         when upper(${title}) like upper('% Security %') then 'Security'
       END;;
+      drill_fields: [title]
   }
-  measure: count {
+  measure: asset_count {
     type: count
-    drill_fields: []
+    drill_fields: [title,type]
+  }
+  measure: asset_count_distinct {
+    type: count_distinct
+    sql: ${row_wid} ;;
+    drill_fields: [title,type]
   }
 }
