@@ -4,8 +4,8 @@ view: person {
   #
   # # Define your dimensions and measures here, like this:
   dimension: person_wid {
+    label: "PersonID"
     primary_key: yes
-    hidden:  yes
     description: "Unique ID for each person"
     type: number
     sql: ${TABLE}.person_wid ;;
