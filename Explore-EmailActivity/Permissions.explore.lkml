@@ -7,26 +7,30 @@ include: "/Views-Permissions/*.view.lkml"
 explore: permission_global {
   group_label: "Permissions"
   label: "Global"
+  view_label: "Permission"
   from: fact_global_permission
-  join: product {
-    view_label: "Business Level Group"
+
+  join: business_level {
+    view_label: "Permission"
     type: left_outer
-    fields: [product.product_title]
-    sql_on: ${permission_global.brand_wid} = ${product.row_wid} ;;
+    from: product
+    fields: [business_level.product_title]
+    sql_on: ${permission_global.brand_wid} = ${business_level.row_wid} ;;
     relationship: many_to_one
   }
   join: country {
+    view_label: "Permission"
     type: left_outer
     fields: [country_name]
     sql_on: ${permission_global.country_wid} = ${country.row_wid} ;;
     relationship: many_to_one
   }
 
-  join: permission_date {
-    view_label: "Permission Created Date"
+  join: permission {
+    view_label: "Permission"
     from:  day_dim
     type: left_outer
-    sql_on: ${permission_global.permission_date_wid} = ${permission_date.row_wid} ;;
+    sql_on: ${permission_global.permission_date_wid} = ${permission.row_wid} ;;
     relationship: many_to_one
   }
 
@@ -63,5 +67,16 @@ explore: permission_email_group {
     relationship: many_to_one
   }
 
+  join: product {
+    relationship: one_to_many
+    sql_on:  ${product.row_wid} = ${email_group.brand_wid} ;;
+  }
 
+  join: promotion {
+    view_label: "Filters"
+    type: left_outer
+    from: promotion_type_dim
+    relationship: one_to_many
+    sql_on:  ${promotion.row_wid} = ${email_group.promotion_type_wid} ;;
+  }
 }

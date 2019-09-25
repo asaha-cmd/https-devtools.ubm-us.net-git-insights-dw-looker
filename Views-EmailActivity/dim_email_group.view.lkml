@@ -45,8 +45,4 @@ view: dim_email_group {
     sql: ${TABLE}.standard_email_group ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: []
-  }
 }

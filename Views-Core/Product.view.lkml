@@ -10,6 +10,7 @@ view: product {
   }
 
   dimension: product_title {
+    label: "{% assign words = _view._name | split: '_' %}{% for word in words %} {{ word | capitalize }}{% endfor %} Title"
     type: string
     sql: ${TABLE}.title ;;
   }
