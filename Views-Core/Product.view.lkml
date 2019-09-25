@@ -112,4 +112,15 @@ view: product {
     hidden:  yes
   }
 
+  dimension: brand_list {
+    hidden: yes
+    sql: CASE WHEN ${product_brand} IN ('Dark Reading','InformationWeek','Network Computing') THEN ${product_brand} ELSE null END ;;
+  }
+
+  filter: it_media_brands {
+    type: string
+    suggest_dimension: product.brand_list
+  }
+
+
 }
