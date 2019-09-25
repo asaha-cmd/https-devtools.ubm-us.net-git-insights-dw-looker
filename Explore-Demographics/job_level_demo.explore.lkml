@@ -13,27 +13,26 @@ explore: demographic_job_level {
     relationship:one_to_many
   }
 
-  join: job_level {
+  join: job_level_value_dim {
     view_label: "Job Level"
-    from: job_level_value_dim
     type: left_outer
     #fields: [job_level_value_dim.standard_name, job_level_value_dim.original_name]
-    sql_on:  ${demographic_job_level.job_level_value_wid} = ${job_level.row_wid} ;;
+    sql_on:  ${demographic_job_level.job_level_value_wid} = ${job_level_value_dim.row_wid} ;;
     relationship: one_to_many
   }
 
   join: person {
     type: left_outer
-    fields: [is_email_valid,company, not_supressed, hard_bounced, pending_delete]
+    fields: [demographic_fields*]
     sql_on: ${job_level_demo_fact.person_wid} = ${person.person_wid} ;;
     relationship: many_to_one
   }
 
-  join: job_level_day_dim {
+  join: activity {
     view_label: "Job Level"
     from: day_dim
     type: left_outer
-    sql_on:  ${job_level_demo_fact.modified_date_wid} = ${job_level_day_dim.row_wid} ;;
+    sql_on:  ${job_level_demo_fact.modified_date_wid} = ${activity.row_wid} ;;
     relationship: one_to_one
   }
   join: audience_group {

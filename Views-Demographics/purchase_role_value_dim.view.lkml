@@ -15,8 +15,8 @@ view: purchase_role_value_dim {
   }
 
   dimension: original_name {
-    label: "{% assign words = _view._name | split:'_' %}
-    {% for word in words %} {{word | capitalize }} {% endfor %} Value from Form"
+    label: "{%if _view._name contains 'value_dim' %} Value From Form {% else %} {% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} from Form{% endif %}"
     type: string
     sql: ${TABLE}.original_name ;;
   }
@@ -37,8 +37,8 @@ view: purchase_role_value_dim {
   }
 
   dimension: standard_name {
-    label: "{% assign words = _view._name | split:'_' %}
-    {% for word in words %} {{word | capitalize }} {% endfor %} Standardized Value"
+    label: "{%if _view._name contains 'value_dim' %} Standard Value {% else %} {% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} Standard Value{% endif %}"
     type: string
     sql: ${TABLE}.standard_name ;;
   }

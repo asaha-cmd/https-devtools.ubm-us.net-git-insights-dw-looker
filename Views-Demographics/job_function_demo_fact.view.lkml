@@ -51,14 +51,16 @@ view: job_function_demo_fact {
     sql: ${TABLE}.warehouse_update_date_wid ;;
   }
   measure: number_of_people {
-    type: count
+    type: count_distinct
     description: "Count of People"
-    sql_distinct_key: ${person_wid} ;;
+    hidden:yes
+    sql: ${person_wid} ;;
   }
 
   measure: number_of_distinct_people {
     description: "Count of People"
     type: count_distinct
+    hidden:yes
     sql_distinct_key: ${person_wid} ;;
     }
 }

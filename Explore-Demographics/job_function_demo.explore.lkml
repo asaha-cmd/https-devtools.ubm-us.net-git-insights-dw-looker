@@ -14,28 +14,27 @@ explore: demographic_job_function {
     relationship:one_to_many
   }
 
-  join: job_function {
-    from: job_function_value_dim
+  join: job_function_value_dim {
     view_label: "Job Function"
     type: left_outer
     #fields: [job_function_value_dim.standard_name, job_function_value_dim.original_name]
-    sql_on:  ${demographic_job_function.job_function_value_wid} = ${job_function.row_wid} ;;
+    sql_on:  ${demographic_job_function.job_function_value_wid} = ${job_function_value_dim.row_wid} ;;
     relationship: one_to_many
   }
 
   join: person {
     type: left_outer
-    fields: [is_email_valid,company, not_supressed, hard_bounced, pending_delete]
+    fields: [demographic_fields*]
     sql_on: ${job_function_demo_fact.person_wid} = ${person.person_wid} ;;
     relationship: many_to_one
   }
 
-  join: job_function_day_dim {
+  join: activity {
     view_label: "Job Function"
     from: day_dim
     type: left_outer
     fields: [activity_dates*]
-    sql_on:  ${job_function_demo_fact.modified_date_wid} = ${job_function_day_dim.row_wid} ;;
+    sql_on:  ${job_function_demo_fact.modified_date_wid} = ${activity.row_wid} ;;
     relationship: one_to_one
   }
 

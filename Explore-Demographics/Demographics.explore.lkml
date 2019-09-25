@@ -15,26 +15,25 @@ explore: demographic_industry {
     relationship:one_to_many
   }
 
-  join: industry {
+  join: industry_value_dim {
     view_label: "Industry"
-    from: industry_value_dim
     type: left_outer
-    sql_on:  ${demographic_industry.industry_value_wid} = ${industry.row_wid} ;;
+    sql_on:  ${demographic_industry.industry_value_wid} = ${industry_value_dim.row_wid} ;;
     relationship: one_to_many
   }
 
   join: person {
     type: left_outer
-    fields: [person.number_of_people]
+    fields: [demographic_fields*]
     sql_on: ${industry_demo_fact.person_wid} = ${person.person_wid} ;;
     relationship: many_to_one
   }
 
-  join: industry_day_dim {
+  join: activity {
     view_label: "Industry"
     from: day_dim
     type: left_outer
-    sql_on:  ${industry_demo_fact.modified_date_wid} = ${industry_day_dim.row_wid} ;;
+    sql_on:  ${industry_demo_fact.modified_date_wid} = ${activity.row_wid} ;;
     relationship: one_to_one
   }
   join: audience_group {
@@ -57,26 +56,25 @@ explore:: demographic_company_size {
     relationship:one_to_many
   }
 
-  join: company_size {
+  join: company_size_value_dim {
     view_label: "Company Size"
-    from: company_size_value_dim
     type: left_outer
-    sql_on:  ${demographic_company_size.company_size_value_wid} = ${company_size.row_wid} ;;
+    sql_on:  ${demographic_company_size.company_size_value_wid} = ${company_size_value_dim.row_wid} ;;
     relationship: one_to_many
   }
 
   join: person {
     type: left_outer
-    fields: [person.number_of_people]
+    fields: [demographic_fields*]
     sql_on: ${company_size_demo_fact.person_wid} = ${person.person_wid} ;;
     relationship: many_to_one
   }
 
-  join: company_size_day_dim {
+  join: activity {
     view_label: "Company Size"
     from: day_dim
     type: left_outer
-    sql_on:  ${company_size_demo_fact.modified_date_wid} = ${company_size_day_dim.row_wid} ;;
+    sql_on:  ${company_size_demo_fact.modified_date_wid} = ${activity.row_wid} ;;
     relationship: one_to_one
   }
 

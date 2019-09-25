@@ -144,6 +144,7 @@ left join (select demographic_wid, demographic_value_wid as purchase_role_wid fr
     view_label: "Historic Demographics"
     type: count_distinct
     description: "Count of Distinct People"
+    hidden:yes
     sql: ${person_wid} ;;
   }
 }

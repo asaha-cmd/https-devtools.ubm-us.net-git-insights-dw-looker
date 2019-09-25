@@ -77,16 +77,16 @@ explore: demographics_historic {
     relationship: many_to_many
   }
 
-  join: historic_day_dim {
+  join: historic {
     view_label: "Historic Demographics"
     from: day_dim
     type: left_outer
-    sql_on:  ${demographics_historic.created_date_wid} = ${historic_day_dim.row_wid} ;;
+    sql_on:  ${demographics_historic.created_date_wid} = ${historic.row_wid} ;;
     relationship: one_to_one
   }
   join: person {
     type: left_outer
-    fields: [person.number_of_people]
+    fields: [demographic_fields*]
     sql_on: ${demographics_historic.person_wid} = ${person.person_wid} ;;
     relationship: many_to_one
   }
