@@ -120,6 +120,7 @@ view: product {
   filter: it_media_brands {
     type: string
     suggest_dimension: product.brand_list
+    sql: {% condition it_media_brands %} ${product_brand} {% endcondition %} ;;
   }
 
 
