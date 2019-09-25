@@ -35,6 +35,7 @@ view: dim_email {
 
   measure: count {
     type: count
+    label: "Email Count"
     drill_fields: [email_name]
   }
 }

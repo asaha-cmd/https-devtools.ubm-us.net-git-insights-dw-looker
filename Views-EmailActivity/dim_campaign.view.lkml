@@ -33,6 +33,7 @@ view: dim_campaign {
 
   measure: count {
     type: count
+    label: "Campaign Count"
     drill_fields: [campaign_name]
   }
 }
