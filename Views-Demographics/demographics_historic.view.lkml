@@ -141,8 +141,10 @@ left join (select demographic_wid, demographic_value_wid as purchase_role_wid fr
   }
 
    measure: demographic_count {
-    type: count
+    view_label: "Historic Demographics"
+    type: count_distinct
     description: "Count of Distinct People"
-    sql_distinct_key: ${TABLE}.person_wid ;;
+    hidden:yes
+    sql: ${person_wid} ;;
   }
 }

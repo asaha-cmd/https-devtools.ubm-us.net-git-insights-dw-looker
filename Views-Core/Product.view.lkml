@@ -10,6 +10,7 @@ view: product {
   }
 
   dimension: product_title {
+    label: "{% assign words = _view._name | split: '_' %}{% for word in words %} {{ word | capitalize }}{% endfor %} Title"
     type: string
     sql: ${TABLE}.title ;;
   }
@@ -110,5 +111,16 @@ view: product {
     sql: ${TABLE}.start_date_wid ;;
     hidden:  yes
   }
+
+  dimension: brand_list {
+    hidden: yes
+    sql: CASE WHEN ${product_brand} IN ('Dark Reading','InformationWeek','Network Computing') THEN ${product_brand} ELSE null END ;;
+  }
+
+  filter: it_media_brands {
+    type: string
+    suggest_dimension: product.brand_list
+  }
+
 
 }

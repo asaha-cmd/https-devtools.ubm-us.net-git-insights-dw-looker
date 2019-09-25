@@ -2,7 +2,7 @@ view: day_dim {
   sql_table_name: cidw.day_dim ;;
 
   dimension_group: calendar {
-    label: "{% assign words = _view._name | split: '_' %}{% for word in words %}{{ word | capitalize }}{% endfor %}"
+    label: "{% assign words = _view._name | split: '_' %}{% for word in words %} {{ word | capitalize }}{% endfor %}"
     type: time
     timeframes: [
       raw,

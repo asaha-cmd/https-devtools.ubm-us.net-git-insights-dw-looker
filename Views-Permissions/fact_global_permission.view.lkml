@@ -76,6 +76,7 @@ view: fact_global_permission {
 
   measure: global_count {
     type: count
+    hidden: yes
     description: "Global Count"
   }
 }

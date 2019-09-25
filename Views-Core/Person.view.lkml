@@ -161,4 +161,8 @@ dimension: city {
     description: "Count of Distinct People by Email Address"
     sql_distinct_key: ${email_address} ;;
   }
+
+  set: demographic_fields {
+    fields: [is_email_valid,company, not_supressed, hard_bounced, pending_delete,number_of_people]
+    }
 }

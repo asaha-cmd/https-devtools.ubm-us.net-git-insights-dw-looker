@@ -55,8 +55,8 @@ view: asset_dim {
     sql:
       CASE
         when upper(${title}) like upper('% AI %') then 'AI'
-        when upper(${title}) like upper('S%ystem %') then 'System'
-        when upper(${title}) like upper('C%TO %') then 'CTO'
+        when upper(${title}) like upper('% System %') then 'System'
+        when upper(${title}) like upper('% CTO %') then 'CTO'
         when upper(${title}) like upper('% LAN %') then 'LAN'
         when upper(${title}) like upper('% Data %') then 'Data'
         when upper(${title}) like upper('% Cloud %') then 'Cloud'
