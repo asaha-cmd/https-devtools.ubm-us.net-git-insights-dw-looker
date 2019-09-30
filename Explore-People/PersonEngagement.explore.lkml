@@ -14,6 +14,15 @@ explore: fact_engagement {
     sql_on: ${fact_engagement.engagement_date_wid} = ${engagement.row_wid};;
   }
 
+  join: create {
+    view_label: "Person"
+    from: day_dim
+    relationship: many_to_one
+    type: inner
+    sql_on: ${person.created_date_wid} = ${create.row_wid} AND
+      ${person.created_date_wid} = ${fact_engagement.engagement_date_wid};;
+  }
+
   join: person {
     relationship: many_to_one
     type: inner
