@@ -103,7 +103,8 @@ view: Online_Activity {
     hidden: yes
   }
 
-  measure: count {
+  measure: activity_count {
     type: count
+    drill_fields: [asset_dim.title, asset_dim.type,site_dim.name]
   }
 }
