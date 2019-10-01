@@ -2,12 +2,14 @@ view: event_qa_history_fact {
   sql_table_name: cidw.event_qa_history_fact ;;
 
   dimension: answer_wid {
+    hidden: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.answer_wid ;;
   }
 
   dimension: created_date_wid {
+    hidden: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.created_date_wid ;;
@@ -21,24 +23,28 @@ view: event_qa_history_fact {
   }
 
   dimension: modified_date_wid {
+    hidden: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.modified_date_wid ;;
   }
 
   dimension: person_wid {
+    hidden: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.person_wid ;;
   }
 
   dimension: product_wid {
+    hidden: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.product_wid ;;
   }
 
   dimension: question_wid {
+    hidden: yes
     type: number
     value_format_name: id
     sql: ${TABLE}.question_wid ;;
@@ -52,7 +58,9 @@ view: event_qa_history_fact {
     sql: ${TABLE}.row_wid ;;
   }
 
-  measure: count {
-    type: count
+  dimension: event_reg_id {
+    hidden: yes
+    type: string
+    sql: ${TABLE}.src_sys_reg_record_id ;;
   }
 }

@@ -87,4 +87,27 @@ explore: event_registration {
           and ${event_registration.person_wid} = ${event_reg_discount_fact.person_wid}
           and ${event_registration.product_wid} = ${event_reg_discount_fact.product_wid};;
   }
+
+  join: question_answers {
+    from: event_qa_history_fact
+    view_label: "Event Questions/Answers"
+    relationship: one_to_many
+    sql_on:  ${event_registration.product_wid} = ${question_answers.product_wid}
+      and ${event_registration.person_wid} = ${question_answers.person_wid}
+      and ${event_registration.event_reg_id} = ${question_answers.event_reg_id};;
+  }
+
+  join: question {
+    from: question_dim
+    view_label: "Event Questions/Answers"
+    relationship: one_to_one
+    sql_on: ${question.row_wid} = ${question_answers.question_wid} ;;
+  }
+
+  join: answer {
+    from: answer_dim
+    view_label: "Event Questions/Answers"
+    relationship: one_to_one
+    sql_on: ${answer.row_wid} = ${question_answers.answer_wid} ;;
+  }
 }
