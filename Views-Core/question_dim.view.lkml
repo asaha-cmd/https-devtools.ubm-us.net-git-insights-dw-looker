@@ -25,9 +25,9 @@ view: question_dim {
     sql: ${TABLE}.row_wid ;;
   }
 
-  dimension: std_question_id {
+  dimension: question_src_sys_id {
     type: string
-    sql: ${TABLE}.std_question_id ;;
+    sql: ${TABLE}.question_src_sys_id ;;
   }
 
   dimension: warehouse_date_wid {
