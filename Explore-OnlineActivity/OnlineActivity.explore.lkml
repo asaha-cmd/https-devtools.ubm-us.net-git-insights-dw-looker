@@ -46,5 +46,27 @@ explore: Online_Activity {
     sql_on: ${Online_Activity.site_wid} = ${site_dim.row_wid} ;;
   }
 
+  join: question_answers {
+    from: asset_qa_history_fact
+    view_label: "Questions/Answers"
+    relationship: one_to_many
+    sql_on:  ${Online_Activity.product_wid} = ${question_answers.product_wid}
+      and ${Online_Activity.person_wid} = ${question_answers.person_wid}
+      and ${Online_Activity.online_activity_src_sys_id} = ${question_answers.transaction_id};;
+  }
+
+  join: question {
+    from: question_dim
+    view_label: "Questions/Answers"
+    relationship: one_to_one
+    sql_on: ${question.row_wid} = ${question_answers.question_wid} ;;
+  }
+
+  join: answer {
+    from: answer_dim
+    view_label: "Questions/Answers"
+    relationship: one_to_one
+    sql_on: ${answer.row_wid} = ${question_answers.answer_wid} ;;
+  }
 
 }
