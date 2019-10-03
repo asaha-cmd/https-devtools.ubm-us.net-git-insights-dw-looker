@@ -102,6 +102,7 @@ dimension: city {
   }
 
   dimension: not_supressed {
+    label: "Spam Trap Suppression"
     type: yesno
     sql:  CASE WHEN ${TABLE}.spam_trap = 'N' THEN true ELSE false END;;
   }
