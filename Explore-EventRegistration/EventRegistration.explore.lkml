@@ -13,6 +13,13 @@ explore: event_registration {
     sql_on: ${event_registration.person_wid} = ${person.person_wid} ;;
   }
 
+  join: create {
+    view_label: "Person"
+    from:day_dim
+    relationship: one_to_one
+    sql_on: ${create.row_wid} = ${person.created_date_wid} ;;
+  }
+
   join: product {
     type: inner
     relationship: many_to_one
