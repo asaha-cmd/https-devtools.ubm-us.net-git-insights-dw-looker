@@ -103,13 +103,13 @@ dimension: city {
 
   dimension: not_supressed {
     type: yesno
-    sql:  CASE WHEN ${TABLE}.not_suppressed = 'N' THEN true ELSE false END;;
+    sql:  CASE WHEN ${TABLE}.spam_trap = 'N' THEN true ELSE false END;;
   }
 
   dimension: hard_bounced {
     type: yesno
     description: "Hard Bounce of Person's Email Address"
-    sql: CASE WHEN ${TABLE}.email_status = 'N' THEN true ELSE false END ;;
+    sql: CASE WHEN ${TABLE}.hard_bounce = 'N' THEN true ELSE false END ;;
   }
 
   dimension_group: hard_bounced_modified {
@@ -124,7 +124,7 @@ dimension: city {
       year
     ]
     description: "Hard Bounce Flag Modification"
-    sql: ${TABLE}.email_status_modified_date ;;
+    sql: ${TABLE}.hard_bounce_modified_date ;;
   }
 
   dimension: pending_delete {
