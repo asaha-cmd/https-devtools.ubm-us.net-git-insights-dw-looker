@@ -101,7 +101,8 @@ dimension: city {
     drill_fields: [state]
   }
 
-  dimension: not_supressed {
+  dimension: spam_trap {
+    alias: [not_supressed]
     label: "Spam Trap Suppression"
     type: yesno
     sql:  CASE WHEN ${TABLE}.spam_trap = 'N' THEN true ELSE false END;;
@@ -164,6 +165,6 @@ dimension: city {
   }
 
   set: demographic_fields {
-    fields: [is_email_valid,company, not_supressed, hard_bounced, pending_delete,number_of_people]
+    fields: [is_email_valid,company, spam_trap, hard_bounced, pending_delete,number_of_people]
     }
 }
