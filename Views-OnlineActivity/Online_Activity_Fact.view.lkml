@@ -104,6 +104,7 @@ view: Online_Activity {
   }
 
   measure: activity_count {
+    alias: [count]
     type: count
     drill_fields: [asset_dim.title, asset_dim.type,site_dim.name]
   }
