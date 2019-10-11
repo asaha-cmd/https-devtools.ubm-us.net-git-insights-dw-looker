@@ -161,7 +161,7 @@ dimension: city {
   measure: number_of_distinct_people_by_email_address {
     type: count_distinct
     description: "Count of Distinct People by Email Address"
-    sql_distinct_key: ${email_address} ;;
+    sql: ${email_address} ;;
   }
 
   set: demographic_fields {
