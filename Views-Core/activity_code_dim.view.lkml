@@ -10,19 +10,27 @@ view: activity_code_dim {
     type: string
     case: {
       when: {
-        sql: ${code} ilike 'nl_%' ;;
-        label: "NL"
+        sql: ${code} ilike 'clnt%' ;;
+        label: "Client"
       }
       when: {
-        sql: ${code} ilike 'we_%' ;;
-        label: "WE"
+        sql: ${code} ilike 'nl%' ;;
+        label: "Newsletter"
       }
       when: {
-        sql: ${code} ilike 'em_%' ;;
-        label: "EM"
+        sql: ${code} ilike 'tydl%' ;;
+        label: "Tech Library"
+      }
+      when: {
+        sql: ${code} ilike 'dlrr%' ;;
+        label: "Tech Library"
+      }
+      when: {
+        sql: ${code} ilike 'mp_%' ;;
+        label: "Media Placement"
       }
       # possibly more when statements
-      else: "No matching code"
+      else: "Other"
     }
   }
 
