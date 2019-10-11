@@ -12,6 +12,7 @@ datagroup: basic_cache {
   sql_trigger: SELECT max(warehouse_update_date_wid) FROM cidw.person_dim ;;
 }
 persist_with: basic_cache
+case_sensitive: no
 
 include: "/Explore-People/*.explore.lkml"
 include: "/Explore-EventRegistration/*.explore.lkml"
