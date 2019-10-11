@@ -6,6 +6,26 @@ view: activity_code_dim {
     sql: ${TABLE}.code ;;
   }
 
+  dimension: pick_list_code_a {
+    type: string
+    case: {
+      when: {
+        sql: ${code} ilike 'nl_%' ;;
+        label: "NL"
+      }
+      when: {
+        sql: ${code} ilike 'we_%' ;;
+        label: "WE"
+      }
+      when: {
+        sql: ${code} ilike 'em_%' ;;
+        label: "EM"
+      }
+      # possibly more when statements
+      else: "No matching code"
+    }
+  }
+
   dimension: code_source {
     type: string
     sql: ${TABLE}.code_source ;;
@@ -31,5 +51,6 @@ view: activity_code_dim {
 
   measure: count {
     type: count
+    drill_fields: [asset_dim.title, code, code_type, code_source, pick_list_code_a]
   }
 }
