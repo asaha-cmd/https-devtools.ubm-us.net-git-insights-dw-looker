@@ -36,6 +36,7 @@ view: asset_dim {
   dimension: title {
     type: string
     sql: ${TABLE}.title ;;
+    case_sensitive: no
   }
 
   dimension: type {
