@@ -40,6 +40,7 @@ view: product_interests_value_dim {
   dimension: standard_name {
     label: "{%if _view._name contains 'value_dim' %} Standard Value {% else %} {% assign words = _view._name | split:'_' %}
     {% for word in words %} {{word | capitalize }} {% endfor %} Standard Value{% endif %}"
+    description: "Mapped value of user entry"
     type: string
     sql: ${TABLE}.standard_name ;;
   }

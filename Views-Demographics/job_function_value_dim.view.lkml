@@ -14,13 +14,22 @@ view: job_function_value_dim {
     sql: ${TABLE}.original_code ;;
   }
 
-dimension: original_name {
-  label: "{%if _view._name contains 'value_dim' %} Value From Form {% else %} {% assign words = _view._name | split:'_' %}
-  {% for word in words %} {{word | capitalize }} {% endfor %} from Form{% endif %}"
-  description: "Value entered or selected by user"
-  type: string
-  sql: ${TABLE}.original_name ;;
-}
+  dimension: original_name {
+    label: "{%if _view._name contains 'value_dim' %} Value From Form {% else %} {% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} from Form{% endif %}"
+    description: "Value entered or selected by user"
+    type: string
+    sql: ${TABLE}.original_name ;;
+  }
+
+  dimension: standard_name {
+    label: "{%if _view._name contains 'value_dim' %} Standard Value {% else %} {% assign words = _view._name | split:'_' %}
+    {% for word in words %} {{word | capitalize }} {% endfor %} Standard Value{% endif %}"
+    description: "Mapped value of user entry"
+    type: string
+    sql: ${TABLE}.standard_name ;;
+    drill_fields: [original_name]
+  }
 
   dimension: product_wid {
     type: number
@@ -37,14 +46,6 @@ dimension: original_name {
     sql: ${TABLE}.row_wid ;;
   }
 
-  dimension: standard_name {
-    label: "{%if _view._name contains 'value_dim' %} Standard Value {% else %} {% assign words = _view._name | split:'_' %}
-    {% for word in words %} {{word | capitalize }} {% endfor %} Standard Value{% endif %}"
-    description: "Mapped value of user entry"
-    type: string
-    sql: ${TABLE}.standard_name ;;
-    drill_fields: [original_name]
-  }
 
 
   measure: count {
