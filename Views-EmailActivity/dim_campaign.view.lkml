@@ -32,7 +32,8 @@ view: dim_campaign {
   }
 
   measure: count {
-    type: count
+    type: count_distinct
+    sql: ${row_wid} ;;
     label: "Campaign Count"
     drill_fields: [campaign_name]
   }

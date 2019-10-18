@@ -34,7 +34,8 @@ view: dim_email {
   }
 
   measure: count {
-    type: count
+    type: count_distinct
+    sql: ${row_wid} ;;
     label: "Email Count"
     drill_fields: [email_name]
   }

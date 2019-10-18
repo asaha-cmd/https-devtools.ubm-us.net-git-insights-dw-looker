@@ -45,4 +45,10 @@ view: dim_email_group {
     sql: ${TABLE}.standard_email_group ;;
   }
 
+  measure: count {
+    type: count_distinct
+    sql: ${row_wid} ;;
+    label: "Email Group Count"
+    drill_fields: [eloqua_email_group]
+  }
 }
