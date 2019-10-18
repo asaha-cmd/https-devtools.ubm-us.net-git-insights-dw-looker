@@ -19,6 +19,13 @@ explore: email_click {
     sql_on: ${campaign.row_wid} = ${email_click.campaign_wid} ;;
   }
 
+  join: campaign_created {
+    view_label: "Email Send"
+    from: day_dim
+    relationship: one_to_one
+    sql_on: ${campaign.created_date_wid} = ${campaign_created.row_wid};;
+  }
+
   join: click_date {
     from: day_dim
     relationship: one_to_one

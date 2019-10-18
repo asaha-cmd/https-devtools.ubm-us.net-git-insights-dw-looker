@@ -9,7 +9,7 @@ view: dim_campaign {
   dimension: created_date_wid {
     hidden: yes
     type: number
-    sql: {TABLE}.created_date_wid ;;
+    sql: ${TABLE}.created_date_wid ;;
   }
 
   dimension: data_source_wid {
