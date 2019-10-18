@@ -28,6 +28,12 @@ explore: email_send {
     sql_on: ${email_send.activity_date_wid} = ${send.row_wid} ;;
   }
 
+  join: campaign_created {
+    view_label: "Email Send"
+    from: day_dim
+    relationship: one_to_one
+    sql_on: ${campaign.created_date_wid} = ${campaign_created.row_wid};;
+  }
   join: person {
     relationship: one_to_one
     sql_on:  ${person.person_wid} = ${email_send.person_wid} ;;
