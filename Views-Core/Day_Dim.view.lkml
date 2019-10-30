@@ -49,6 +49,13 @@ view: day_dim {
       calendar_year
     ]
   }
+
+  dimension: per_name_half {
+    type: string
+    label: "{% assign words = _view._name | split: '_' %}{% for word in words %} {{ word | capitalize }}{% endfor %} Date Year Half"
+    sql:  ${TABLE}.per_name_half ;;
+    drill_fields: [calendar_quarter]
+  }
   dimension: row_wid {
     type: number
     value_format_name: id

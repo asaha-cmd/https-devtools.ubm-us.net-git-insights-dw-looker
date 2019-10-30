@@ -57,7 +57,15 @@ view: fact_email_send {
   }
 
   measure: send_count {
+    label: "Total Mails Sent"
     type: count
-    description: "Sent Email Count"
+    description: "Count of All Mails sent"
+  }
+
+  measure: user_count {
+    label: "Total Users Sent Mail"
+    type: count_distinct
+    description: "Distinct Count of Users Sent Email"
+    sql: ${TABLE}.email_address;;
   }
 }

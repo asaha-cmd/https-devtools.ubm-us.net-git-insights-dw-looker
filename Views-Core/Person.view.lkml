@@ -103,14 +103,15 @@ dimension: city {
 
   dimension: spam_trap {
     alias: [not_supressed]
+    description: "Yes/No whether email address is in a spam list"
     label: "Spam Trap Suppression"
     type: yesno
-    sql:  CASE WHEN ${TABLE}.spam_trap = 'N' THEN true ELSE false END;;
+    sql:  CASE WHEN ${TABLE}.spam_trap = 'Y' THEN true ELSE false END;;
   }
 
   dimension: hard_bounced {
     type: yesno
-    description: "Hard Bounce of Person's Email Address"
+    description: "Yes/No whether email address has Hard Bounced in Eloqua"
     sql: CASE WHEN ${TABLE}.hard_bounce = 'N' THEN true ELSE false END ;;
   }
 
@@ -159,6 +160,7 @@ dimension: city {
   }
 
   measure: number_of_distinct_people_by_email_address {
+    label: "Count of Distinct Persons for {% assign words = _explore._name | split: '_' %}{% for word in words %} {{ word | capitalize }}{% endfor %}"
     type: count_distinct
     description: "Count of Distinct People by Email Address"
     sql: ${email_address} ;;
