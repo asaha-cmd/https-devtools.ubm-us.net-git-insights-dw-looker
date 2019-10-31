@@ -19,8 +19,9 @@ explore: fact_engagement {
     from: day_dim
     relationship: many_to_one
     type: inner
-    sql_on: ${person.created_date_wid} = ${create.row_wid} AND
-      ${person.created_date_wid} = ${fact_engagement.engagement_date_wid};;
+    sql_on: ${person.created_date_wid} = ${create.row_wid}
+    --AND  ${person.created_date_wid} = ${fact_engagement.engagement_date_wid}
+    ;;
   }
 
   join: person {
@@ -43,6 +44,7 @@ explore: fact_engagement {
   }
 
   join: person_permissions {
+    view_label: "Person Permissions"
     from:  person_permissions
     type:  inner
     relationship: many_to_many
@@ -50,9 +52,12 @@ explore: fact_engagement {
   }
 
   join: permission {
+    view_label: "Person Permissions"
     from: day_dim
     relationship: many_to_one
     type: inner
     sql_on: ${person_permissions.permission_date_wid} = ${permission.row_wid} ;;
   }
+
+
 }
