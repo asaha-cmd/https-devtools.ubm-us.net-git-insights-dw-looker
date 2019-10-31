@@ -28,6 +28,21 @@ explore: demographic_industry {
     sql_on: ${industry_demo_fact.person_wid} = ${person.person_wid} ;;
     relationship: many_to_one
   }
+  join: person_permissions {
+    view_label: "Person Permissions"
+    from:  person_permissions
+    type:  inner
+    relationship: many_to_many
+    sql_on: ${person.person_wid} = ${person_permissions.person_wid} ;;
+  }
+
+  join: permission {
+    view_label: "Person Permissions"
+    from: day_dim
+    relationship: many_to_one
+    type: inner
+    sql_on: ${person_permissions.permission_date_wid} = ${permission.row_wid} ;;
+  }
 
   join: activity {
     view_label: "Industry"

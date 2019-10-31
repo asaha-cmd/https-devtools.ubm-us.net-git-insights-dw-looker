@@ -17,6 +17,21 @@ explore: event_registration_passes {
     relationship: many_to_one
     sql_on: ${event_registration_passes.person_wid} = ${person.person_wid} ;;
   }
+  join: person_permissions {
+    view_label: "Person Permissions"
+    from:  person_permissions
+    type:  inner
+    relationship: many_to_many
+    sql_on: ${person.person_wid} = ${person_permissions.person_wid} ;;
+  }
+
+  join: permission {
+    view_label: "Person Permissions"
+    from: day_dim
+    relationship: many_to_one
+    type: inner
+    sql_on: ${person_permissions.permission_date_wid} = ${permission.row_wid} ;;
+  }
 
   join: product {
     type: inner

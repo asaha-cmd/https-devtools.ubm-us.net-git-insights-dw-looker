@@ -154,6 +154,16 @@ dimension: city {
     type:  string
   }
 
+  dimension: emailable {
+    type: yesno
+    sql: ${person.hard_bounced} = 'N'
+      AND ${person.is_email_valid} = 'Y'
+      --AND ${person.pending_delete} = null
+      AND ${person.spam_trap} = 'N'
+      AND NOT (${person_permissions.status} = 'Opt-Out'
+      AND ${person_permissions.permission} = 'Global') ;;
+  }
+
   measure: number_of_people {
     type: count
     description: "Count of People"
