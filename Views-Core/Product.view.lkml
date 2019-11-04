@@ -112,14 +112,54 @@ view: product {
     hidden:  yes
   }
 
-  dimension: brand_list {
+  dimension: brand_list_it {
+    label: "Brand List (IT)"
     hidden: yes
-    sql: CASE WHEN ${product_brand} IN ('Dark Reading','InformationWeek','Network Computing') THEN ${product_brand} ELSE null END ;;
+    case: {
+      when: {
+        sql: ${product_brand} = 'Dark Reading' ;;
+        label: "Dark Reading"
+      }
+      when: {
+        sql: ${product_brand} = 'InformationWeek' ;;
+        label: "InformationWeek"
+      }
+      when: {
+        sql: ${product_brand} = 'Interop' ;;
+        label: "InformationWeek"
+      }
+      when: {
+        sql: ${product_brand} ILIKE 'Enterprise%' ;;
+        label: "InformationWeek"
+      }
+      when: {
+        sql: ${product_brand} = 'Network Computing' ;;
+        label: "Network Computing"
+
+      }
+      when: {
+        sql: ${product_brand} = 'GDC' ;;
+        label: "Gamasutra"
+      }
+      when: {
+        sql: ${product_brand} = 'Gamasutra' ;;
+        label: "Gamasutra"
+      }
+      when: {
+        sql: ${product_brand} = 'Game Career Guide' ;;
+        label: "Game Career Guide"
+      }
+      when: {
+        sql: ${product_brand} = 'No Jitter' ;;
+        label: "No Jitter"
+      }
+    }
   }
 
   filter: it_media_brands {
+    label: "Brands IT Media"
     type: string
-    suggest_dimension: product.brand_list
+    suggest_dimension: product.brand_list_it
     sql: {% condition it_media_brands %} ${product_brand} {% endcondition %} ;;
   }
 
