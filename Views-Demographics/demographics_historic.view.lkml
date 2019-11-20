@@ -16,6 +16,13 @@ left join (select demographic_wid, demographic_value_wid as purchase_role_wid fr
     distribution_style: all
   }
 
+  dimension: product_wid {
+    type: number
+    value_format_name: id
+    hidden: yes
+    sql: ${TABLE}.product_wid ;;
+  }
+
   dimension: audience_group_wid {
     type: number
     value_format_name: id
