@@ -43,6 +43,7 @@ view: purchase_role_value_dim {
     description: "Mapped value of user entry"
     type: string
     sql: ${TABLE}.standard_name ;;
+    drill_fields: [original_name]
   }
 
   measure: count {
