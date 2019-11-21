@@ -97,7 +97,7 @@ explore: demographics_historic {
     relationship: many_to_one
   }
   join: product {
-    view_label: "Historic Demographics"
+    view_label: "Product"
     type: left_outer
     sql_on: ${demographics_historic.product_wid} = ${product.row_wid} ;;
     relationship: many_to_one
