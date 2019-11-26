@@ -13,7 +13,7 @@ derived_table: {
 --INNER JOIN cidw.day_dim  AS permission ON person_permissions.permission_date_wid = permission.row_wid
 --
 --WHERE ("create".calendar_date  < (DATEADD(month,-36, DATE_TRUNC('month', DATE_TRUNC('day',GETDATE())) )))
---    AND ((CASE WHEN person.hard_bounce = 'N' THEN true ELSE false END) = 'N'
+--    AND ((CASE WHEN person.hard_bounce = 'Y' THEN true ELSE false END) = 'N'
 --    AND (CASE WHEN person.valid_email = 'Y' THEN true ELSE false END) = 'Y'
 --    AND (CASE WHEN person.spam_trap = 'Y' THEN true ELSE false END) = 'N'
 --    AND NOT (person_permissions.status = 'Opt-Out'
@@ -35,7 +35,7 @@ derived_table: {
 --INNER JOIN cidw.day_dim  AS permission ON person_permissions.permission_date_wid = permission.row_wid
 --
 --WHERE ("create".calendar_date  < (DATEADD(month,-30, DATE_TRUNC('month', DATE_TRUNC('day',GETDATE())) )))
---    AND ((CASE WHEN person.hard_bounce = 'N' THEN true ELSE false END) = 'N'
+--    AND ((CASE WHEN person.hard_bounce = 'Y' THEN true ELSE false END) = 'N'
 --    AND (CASE WHEN person.valid_email = 'Y' THEN true ELSE false END) = 'Y'
 --    AND (CASE WHEN person.spam_trap = 'Y' THEN true ELSE false END) = 'N'
 --    AND NOT (person_permissions.status = 'Opt-Out'
@@ -57,7 +57,7 @@ INNER JOIN sandbox.LR$XB1XE5KA9TY2BN7DI5G5C_person_permissions AS person_permiss
 INNER JOIN cidw.day_dim  AS permission ON person_permissions.permission_date_wid = permission.row_wid
 
 WHERE ("create".calendar_date  < (DATEADD(month,-24, DATE_TRUNC('month', DATE_TRUNC('day',GETDATE())) )))
-    AND ((CASE WHEN person.hard_bounce = 'N' THEN true ELSE false END) = 'N'
+    AND ((CASE WHEN person.hard_bounce = 'Y' THEN true ELSE false END) = 'N'
     AND (CASE WHEN person.valid_email = 'Y' THEN true ELSE false END) = 'Y'
     AND (CASE WHEN person.spam_trap = 'Y' THEN true ELSE false END) = 'N'
     AND NOT (person_permissions.status = 'Opt-Out'
@@ -79,7 +79,7 @@ INNER JOIN sandbox.LR$XB1XE5KA9TY2BN7DI5G5C_person_permissions AS person_permiss
 INNER JOIN cidw.day_dim  AS permission ON person_permissions.permission_date_wid = permission.row_wid
 
 WHERE ("create".calendar_date  < (DATEADD(month,-18, DATE_TRUNC('month', DATE_TRUNC('day',GETDATE())) )))
-    AND ((CASE WHEN person.hard_bounce = 'N' THEN true ELSE false END) = 'N'
+    AND ((CASE WHEN person.hard_bounce = 'Y' THEN true ELSE false END) = 'N'
     AND (CASE WHEN person.valid_email = 'Y' THEN true ELSE false END) = 'Y'
     AND (CASE WHEN person.spam_trap = 'Y' THEN true ELSE false END) = 'N'
     AND NOT (person_permissions.status = 'Opt-Out'
@@ -101,7 +101,7 @@ INNER JOIN sandbox.LR$XB1XE5KA9TY2BN7DI5G5C_person_permissions AS person_permiss
 INNER JOIN cidw.day_dim  AS permission ON person_permissions.permission_date_wid = permission.row_wid
 
 WHERE ("create".calendar_date  < (DATEADD(month,-12, DATE_TRUNC('month', DATE_TRUNC('day',GETDATE())) )))
-    AND ((CASE WHEN person.hard_bounce = 'N' THEN true ELSE false END) = 'N'
+    AND ((CASE WHEN person.hard_bounce = 'Y' THEN true ELSE false END) = 'N'
     AND (CASE WHEN person.valid_email = 'Y' THEN true ELSE false END) = 'Y'
     AND (CASE WHEN person.spam_trap = 'Y' THEN true ELSE false END) = 'N'
     AND NOT (person_permissions.status = 'Opt-Out'
@@ -123,7 +123,7 @@ INNER JOIN sandbox.LR$XB1XE5KA9TY2BN7DI5G5C_person_permissions AS person_permiss
 INNER JOIN cidw.day_dim  AS permission ON person_permissions.permission_date_wid = permission.row_wid
 
 WHERE ("create".calendar_date  < (DATEADD(month,-6, DATE_TRUNC('month', DATE_TRUNC('day',GETDATE())) )))
-    AND ((CASE WHEN person.hard_bounce = 'N' THEN true ELSE false END) = 'N'
+    AND ((CASE WHEN person.hard_bounce = 'Y' THEN true ELSE false END) = 'N'
     AND (CASE WHEN person.valid_email = 'Y' THEN true ELSE false END) = 'Y'
     AND (CASE WHEN person.spam_trap = 'Y' THEN true ELSE false END) = 'N'
     AND NOT (person_permissions.status = 'Opt-Out'
@@ -141,7 +141,7 @@ FROM cidw.fact_engagement  AS fact_engagement
 INNER JOIN cidw.person_dim  AS person ON fact_engagement.person_wid = person.person_wid
 INNER JOIN cidw.product_dim  AS product ON fact_engagement.brand_wid = product.row_wid
 INNER JOIN sandbox.LR$XB1XE5KA9TY2BN7DI5G5C_person_permissions AS person_permissions ON person.person_wid = person_permissions.person_wid
-WHERE ((CASE WHEN person.hard_bounce = 'N' THEN true ELSE false END) = 'N'
+WHERE ((CASE WHEN person.hard_bounce = 'Y' THEN true ELSE false END) = 'N'
     AND (CASE WHEN person.valid_email = 'Y' THEN true ELSE false END) = 'Y'
     AND (CASE WHEN person.spam_trap = 'Y' THEN true ELSE false END) = 'N'
     AND NOT (person_permissions.status = 'Opt-Out'
