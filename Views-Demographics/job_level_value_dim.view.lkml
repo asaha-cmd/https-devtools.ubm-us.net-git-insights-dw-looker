@@ -46,9 +46,18 @@ view: job_level_value_dim {
     drill_fields: [original_name]
   }
 
-  measure: count {
-    type: count
-    hidden: yes
-    drill_fields: [standard_name, original_name]
-  }
+    measure: standard_count {
+      description: "Count of Standard Demographic values."
+      label: "{% assign words = _field._name | replace: '.', '_' | split: '_' %}{% for word in words %} {{ word | capitalize }}{% endfor %} "
+      type: count_distinct
+      sql: ${TABLE}.standard_name ;;
+      drill_fields: [standard_count, original_name]
+    }
+    measure: original_count {
+      description: "Count of Original Demographic values."
+      label: "{% assign words = _field._name | replace: '.', '_' | split: '_' %}{% for word in words %} {{ word | capitalize }}{% endfor %} "
+      type: count_distinct
+      sql: ${TABLE}.original_name ;;
+      drill_fields: [original_name]
+    }
 }
