@@ -9,13 +9,13 @@ view: data_source {
     sql: ${TABLE}.row_wid ;;
   }
 
-  dimension: name {
+  dimension: data_source_name {
     type: string
     sql: ${TABLE}.data_source_name ;;
     description: "Name of the Data Source"
   }
 
-  dimension: code {
+  dimension: data_source_code {
     type: string
     sql:  ${TABLE}.data_source_code ;;
     description: "Code value for matching the data source"

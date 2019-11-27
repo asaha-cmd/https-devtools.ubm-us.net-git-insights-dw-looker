@@ -21,7 +21,7 @@ view: event_registration_fact {
   }
 
   dimension: data_source_wid {
-    hidden: yes
+    required_access_grants: [developer_access]
     type: number
     value_format_name: id
     sql: ${TABLE}.data_source_wid ;;
@@ -117,4 +117,21 @@ view: event_registration_fact {
   measure: count {
     type: count
   }
+
+  dimension: warehouse_date_wid {
+    hidden: yes
+    required_access_grants: [developer_access]
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.warehouse_date_wid ;;
+  }
+
+  dimension: warehouse_update_date_wid {
+    hidden: yes
+    required_access_grants: [developer_access]
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.warehouse_update_date_wid ;;
+  }
+
 }

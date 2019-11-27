@@ -132,4 +132,28 @@ explore: event_registration {
     relationship: one_to_one
     sql_on: ${answer.row_wid} = ${question_answers.answer_wid} ;;
   }
+
+  join: warehouse {
+    required_access_grants: [developer_access]
+    from: day_dim
+    view_label: "Developer"
+    relationship: one_to_one
+    sql_on: ${event_registration.warehouse_date_wid} = ${warehouse.row_wid} ;;
+  }
+
+  join: warehouse_update {
+    required_access_grants: [developer_access]
+    from: day_dim
+    view_label: "Developer"
+    relationship: one_to_one
+    sql_on: ${event_registration.warehouse_update_date_wid} = ${warehouse_update.row_wid} ;;
+  }
+
+  join: data_source {
+    required_access_grants: [developer_access]
+    from: data_source
+    view_label: "Developer"
+    relationship: one_to_one
+    sql_on: ${data_source.row_wid} = ${event_registration.data_source_wid} ;;
+  }
 }
