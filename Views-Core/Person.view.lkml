@@ -158,7 +158,7 @@ dimension: city {
     type: yesno
     sql: ${person.hard_bounced} = 'Y'
       AND ${person.is_email_valid} = 'Y'
-      --AND ${person.pending_delete} = null
+      AND (${person.pending_delete} = '' or ${person.pending_delete} is null)
       AND ${person.spam_trap} = 'N'
       AND NOT (${person_permissions.status} = 'Opt-Out'
       AND ${person_permissions.permission} = 'Global') ;;
