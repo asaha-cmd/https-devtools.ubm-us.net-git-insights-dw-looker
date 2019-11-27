@@ -112,7 +112,7 @@ dimension: city {
   dimension: hard_bounced {
     type: yesno
     description: "Yes/No whether email address has Hard Bounced in Eloqua"
-    sql: CASE WHEN ${TABLE}.hard_bounce = 'N' THEN true ELSE false END ;;
+    sql: CASE WHEN ${TABLE}.hard_bounce = 'Y' THEN true ELSE false END ;;
   }
 
   dimension_group: hard_bounced_modified {
@@ -156,9 +156,9 @@ dimension: city {
 
   dimension: emailable {
     type: yesno
-    sql: ${person.hard_bounced} = 'N'
+    sql: ${person.hard_bounced} = 'Y'
       AND ${person.is_email_valid} = 'Y'
-      --AND ${person.pending_delete} = null
+      AND (${person.pending_delete} = '' or ${person.pending_delete} is null)
       AND ${person.spam_trap} = 'N'
       AND NOT (${person_permissions.status} = 'Opt-Out'
       AND ${person_permissions.permission} = 'Global') ;;

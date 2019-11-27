@@ -96,4 +96,10 @@ explore: demographics_historic {
     sql_on: ${demographics_historic.audience_group_wid} = ${audience_group.row_wid} ;;
     relationship: many_to_one
   }
+  join: product {
+    view_label: "Product"
+    type: left_outer
+    sql_on: ${demographics_historic.product_wid} = ${product.row_wid} ;;
+    relationship: many_to_one
+  }
 }

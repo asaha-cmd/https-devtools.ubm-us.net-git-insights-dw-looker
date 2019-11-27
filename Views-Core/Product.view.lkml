@@ -37,7 +37,7 @@ view: product {
 
   dimension: is_event {
     type:  yesno
-    sql: CASE WHEN ${TABLE}.event_code is not null THEN true ELSE false END;;
+    sql: CASE WHEN ${TABLE}.event_code is not null and ${TABLE}.event_code != '' THEN true ELSE false END;;
   }
 
   dimension: event_code {

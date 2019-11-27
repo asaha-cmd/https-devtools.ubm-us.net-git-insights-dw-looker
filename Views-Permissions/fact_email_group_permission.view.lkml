@@ -48,7 +48,7 @@ view: fact_email_group_permission {
     view_label: "Filters"
     description: "Is the permission Opt-in or Opt-out"
     type: string
-    sql:  CASE WHEN ${TABLE}.status = 'O' THEN "Opt-Out" WHEN ${TABLE}.status = 'I' THEN "Opt-In" ELSE false END;;
+    sql:  CASE WHEN ${TABLE}.status = 'O' THEN 'Opt-Out' WHEN ${TABLE}.status = 'I' THEN 'Opt-In' ELSE 'Unknown' END;;
     }
 
   dimension: opt_out {
