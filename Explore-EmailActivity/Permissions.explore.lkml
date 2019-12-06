@@ -42,7 +42,7 @@ explore: permission_global {
   join: person_permissions {
     view_label: "Person Permissions"
     from:  person_permissions
-    type:  inner
+    type:  left_outer
     relationship: many_to_many
     sql_on: ${person.person_wid} = ${person_permissions.person_wid} ;;
   }
@@ -51,7 +51,7 @@ explore: permission_global {
     view_label: "Person Permissions"
     from: day_dim
     relationship: many_to_one
-    type: inner
+    type: left_outer
     sql_on: ${person_permissions.permission_date_wid} = ${permissions.row_wid} ;;
   }
 

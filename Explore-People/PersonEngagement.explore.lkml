@@ -46,7 +46,7 @@ explore: fact_engagement {
   join: person_permissions {
     view_label: "Person Permissions"
     from:  person_permissions
-    type:  inner
+    type:  left_outer
     relationship: many_to_many
     sql_on: ${person.person_wid} = ${person_permissions.person_wid} ;;
   }
