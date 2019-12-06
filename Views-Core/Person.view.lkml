@@ -156,7 +156,7 @@ dimension: city {
 
   dimension: emailable {
     type: yesno
-    sql: ${person.hard_bounced} = 'Y'
+    sql: ${person.hard_bounced} = 'N'
       AND ${person.is_email_valid} = 'Y'
       AND (${person.pending_delete} = '' or ${person.pending_delete} is null)
       AND ${person.spam_trap} = 'N'
