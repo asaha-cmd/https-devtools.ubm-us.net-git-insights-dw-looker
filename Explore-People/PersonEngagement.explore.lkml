@@ -47,7 +47,7 @@ explore: fact_engagement {
     view_label: "Person Permissions"
     from:  person_permissions
     type:  left_outer
-    relationship: many_to_many
+    relationship: many_to_one
     sql_on: ${person.person_wid} = ${person_permissions.person_wid} ;;
   }
 

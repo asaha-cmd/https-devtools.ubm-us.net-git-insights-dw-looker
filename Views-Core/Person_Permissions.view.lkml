@@ -1,10 +1,6 @@
 view: person_permissions {
   derived_table: {
     sql: select person_wid, status, brand_wid, 'Global' as permission, permission_date_wid from cidw.fact_global_permission where permission = 'Global'
-    UNION
-    select p.person_wid, status, brand_wid, 'CASL' as permission, permission_date_wid from cidw.fact_global_permission f, cidw.person_dim p where f.person_wid = p.row_wid and f.country_wid = p.country_wid and permission = 'CASL'
-    UNION
-    select person_wid, case when status = 'O' then 'Opt-Out' else 'Opt-In' end as status, brand_wid, standard_email_group as permission, permission_date_wid from cidw.fact_email_group_permission f, cidw.dim_email_group d where f.email_group_wid = d.row_wid
     ;;
     datagroup_trigger: basic_cache
     distribution_style: all
