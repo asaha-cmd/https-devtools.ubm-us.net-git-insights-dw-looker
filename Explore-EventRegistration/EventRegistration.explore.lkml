@@ -88,6 +88,12 @@ explore: event_registration {
     sql_on: ${event_registration.marketing_code_wid} = ${marketing_code.row_wid} ;;
   }
 
+  join: event_registration_dim {
+    view_label: "Event Registration"
+    relationship: one_to_many
+    sql_on: ${event_registration_dim.row_wid} = ${event_registration.event_registration_wid} ;;
+  }
+
   join: event_reg_pass_fact {
     view_label: "Event Registration Passes"
     relationship: one_to_many
