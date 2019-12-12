@@ -54,6 +54,12 @@ explore: event_registration_passes {
     sql_on: ${event_registration.row_wid} = ${event_registration_passes.event_reg_wid} ;;
   }
 
+  join: event_registration_dim {
+    view_label: "Event Registration"
+    relationship: one_to_many
+    sql_on: ${event_registration_dim.row_wid} = ${event_registration.event_registration_wid} ;;
+  }
+
   join: registration {
     from: day_dim
     view_label: "Event Registration"

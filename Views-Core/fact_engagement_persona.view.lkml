@@ -9,7 +9,7 @@ view: fact_engagement_persona {
     sql: ${TABLE}.engagement_type ;;
     link: {
       label: "Engagement Details View"
-      url: "https://looker-us.ubmits.com:9999/dashboards/35?Engagement Type={{ value | url_encode }}&Le Company={{_filters['person.company'] | url_encode }}&Industry={{_filters['person.industry'] | url_encode }}&Job Function={{_filters['person.job_function'] | url_encode }}&Job Level={{_filters['person.job_level'] | url_encode }}"
+      url: "https://looker-us.ubmits.com:9999/dashboards/35?Engagement Type={{ value | url_encode }}&Company={{_filters['person.company'] | url_encode }}&Industry={{_filters['person.industry'] | url_encode }}&Job Function={{_filters['person.job_function'] | url_encode }}&Job Level={{_filters['person.job_level'] | url_encode }}&Engagement Year={{_filters['fact_engagement_persona.engagement.engagement_year'] | url_encode }}&Audience Group={{_filters['fact_engagement_persona.audience_group'] | url_encode }}"
     }
   }
 }
