@@ -26,4 +26,11 @@ include: "/Views-Core/*.view.lkml"
       type: left_outer
       sql_on: ${person_permissions.permission_date_wid} = ${permission.row_wid} ;;
     }
+    join: engagement {
+      view_label: "Engagement Overlap"
+      from: day_dim
+      relationship: many_to_one
+      type: left_outer
+      sql_on: ${engagement_overlap.most_recent_engagement_date} = ${engagement.row_wid} ;;
+    }
 }
