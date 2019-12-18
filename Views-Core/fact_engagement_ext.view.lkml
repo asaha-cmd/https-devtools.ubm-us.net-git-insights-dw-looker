@@ -169,10 +169,10 @@ view: fact_engagement_ext {
         label: "New Engagement"
       }
       when: {
-        sql: ${previous_engagement_days} <= 730;;
+        sql: ${previous_engagement_days} >= 365;;
         label: "Re-Engagement"
         }
-      else: "Unengaged"
+      else: "Active"
     }
   }
 
