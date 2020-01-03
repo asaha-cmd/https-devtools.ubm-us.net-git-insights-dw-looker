@@ -22,6 +22,14 @@ explore: fact_engagement_ext {
     sql_on: ${fact_engagement_ext.previous_engagement_date_wid} = ${previous_engagement.row_wid};;
   }
 
+  join: previous_brand_engagement {
+    view_label: "Engagement"
+    from: day_dim
+    relationship: many_to_one
+    type: inner
+    sql_on: ${fact_engagement_ext.previous_brand_engagement_date_wid} = ${previous_engagement.row_wid};;
+  }
+
   join: create {
     view_label: "Person"
     from: day_dim

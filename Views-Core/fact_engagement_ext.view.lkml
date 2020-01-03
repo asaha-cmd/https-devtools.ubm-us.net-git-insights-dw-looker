@@ -75,6 +75,13 @@ view: fact_engagement_ext {
     sql: ${TABLE}.previous_engagement_date_wid ;;
   }
 
+  dimension: previous_brand_engagement_date_wid {
+    hidden:  yes
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.previous_brand_engagement_date_wid ;;
+  }
+
   dimension: engagement_link {
     hidden:  yes
     type: number
@@ -161,6 +168,11 @@ view: fact_engagement_ext {
     sql: EXTRACT(day from to_timestamp(${engagement_date_wid},'YYYYMMDD') - to_timestamp(${previous_engagement_date_wid},'YYYYMMDD'));;
     }
 
+  dimension: previous_brand_engagement_days {
+    type: number
+    sql: EXTRACT(day from to_timestamp(${engagement_date_wid},'YYYYMMDD') - to_timestamp(${previous_brand_engagement_date_wid},'YYYYMMDD'));;
+  }
+
   dimension: re_engagement {
     #label: "Brand List (IT)"
     case: {
@@ -172,6 +184,21 @@ view: fact_engagement_ext {
         sql: ${previous_engagement_days} >= 365;;
         label: "Re-Engagement"
         }
+      else: "Active"
+    }
+  }
+
+  dimension: brand_re_engagement {
+    #label: "Brand List (IT)"
+    case: {
+      when: {
+        sql: ${previous_brand_engagement_date_wid} is null ;;
+        label: "New Engagement"
+      }
+      when: {
+        sql: ${previous_brand_engagement_days} >= 365;;
+        label: "Re-Engagement"
+      }
       else: "Active"
     }
   }
