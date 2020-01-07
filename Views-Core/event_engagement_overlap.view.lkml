@@ -4,7 +4,7 @@ view: event_engagement_overlap {
 left join
         (select person_wid, f.brand_name, engagement_type, engagement_date_wid, row_number() over (partition by person_wid, engagement_type, f.brand_name order by engagement_date_wid desc) as rnk from cidw.fact_engagement f
         where f.brand_name in ('Interop', 'Enterprise Connect', 'Black Hat', 'InformationWeek', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
- and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Webinar Registration') ) s on f.person_wid = s.person_wid
+ and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Online','Webinar Registration') ) s on f.person_wid = s.person_wid
 left join cidw.event_reg_pass_fact erpf on f.engagement_link = erpf.event_reg_wid
 left join cidw.event_pass_dim epd on erpf.event_pass_wid  = epd.row_wid
 where f.brand_name = 'GDC'
@@ -16,7 +16,7 @@ UNION
 left join
         (select person_wid, f.brand_name, engagement_type, engagement_date_wid, row_number() over (partition by person_wid, engagement_type, f.brand_name order by engagement_date_wid desc) as rnk from cidw.fact_engagement f
         where f.brand_name in ('GDC', 'Enterprise Connect', 'Black Hat', 'InformationWeek', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
-and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Webinar Registration') ) s on f.person_wid = s.person_wid
+and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Online','Webinar Registration') ) s on f.person_wid = s.person_wid
 left join cidw.event_reg_pass_fact erpf on f.engagement_link = erpf.event_reg_wid
 left join cidw.event_pass_dim epd on erpf.event_pass_wid  = epd.row_wid
 where f.brand_name = 'Interop'
@@ -28,7 +28,7 @@ UNION
 left join
         (select person_wid, f.brand_name, engagement_type, engagement_date_wid, row_number() over (partition by person_wid, engagement_type, f.brand_name order by engagement_date_wid desc) as rnk from cidw.fact_engagement f
         where f.brand_name in ('Interop', 'GDC', 'Black Hat', 'InformationWeek', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
-and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Webinar Registration') ) s on f.person_wid = s.person_wid
+and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Online','Webinar Registration') ) s on f.person_wid = s.person_wid
 left join cidw.event_reg_pass_fact erpf on f.engagement_link = erpf.event_reg_wid
 left join cidw.event_pass_dim epd on erpf.event_pass_wid  = epd.row_wid
 where f.brand_name = 'Enterprise Connect'
@@ -40,7 +40,7 @@ UNION
 left join
         (select person_wid, f.brand_name, engagement_type, engagement_date_wid, row_number() over (partition by person_wid, engagement_type, f.brand_name order by engagement_date_wid desc) as rnk from cidw.fact_engagement f
         where f.brand_name in ('Interop', 'GDC', 'Enterprise Connect', 'InformationWeek', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
-and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Webinar Registration') ) s on f.person_wid = s.person_wid
+and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Online','Webinar Registration') ) s on f.person_wid = s.person_wid
 left join cidw.event_reg_pass_fact erpf on f.engagement_link = erpf.event_reg_wid
 left join cidw.event_pass_dim epd on erpf.event_pass_wid  = epd.row_wid
 where f.brand_name = 'Black Hat'
