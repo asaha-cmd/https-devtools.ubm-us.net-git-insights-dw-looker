@@ -3,7 +3,7 @@ view: event_engagement_overlap {
     sql:select distinct f.person_wid, f.brand_name as main_brand, s.brand_name as second_brand, s.engagement_type, s.engagement_date_wid from cidw.fact_engagement f
 left join
         (select person_wid, f.brand_name, engagement_type, engagement_date_wid, row_number() over (partition by person_wid, engagement_type, f.brand_name order by engagement_date_wid desc) as rnk from cidw.fact_engagement f
-        where f.brand_name in ('Interop', 'Enterprise Connect', 'Black Hat', 'InformationWeek', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
+        where f.brand_name in ('Interop', 'Enterprise Connect', 'Black Hat', 'InformationWeek', 'Gamasutra', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
  and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Online','Webinar Registration') ) s on f.person_wid = s.person_wid
 left join cidw.event_reg_pass_fact erpf on f.engagement_link = erpf.event_reg_wid
 left join cidw.event_pass_dim epd on erpf.event_pass_wid  = epd.row_wid
@@ -15,7 +15,7 @@ UNION
  select distinct f.person_wid, f.brand_name as main_brand, s.brand_name as second_brand, s.engagement_type, s.engagement_date_wid from cidw.fact_engagement f
 left join
         (select person_wid, f.brand_name, engagement_type, engagement_date_wid, row_number() over (partition by person_wid, engagement_type, f.brand_name order by engagement_date_wid desc) as rnk from cidw.fact_engagement f
-        where f.brand_name in ('GDC', 'Enterprise Connect', 'Black Hat', 'InformationWeek', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
+        where f.brand_name in ('GDC', 'Enterprise Connect', 'Black Hat', 'InformationWeek', 'Gamasutra', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
 and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Online','Webinar Registration') ) s on f.person_wid = s.person_wid
 left join cidw.event_reg_pass_fact erpf on f.engagement_link = erpf.event_reg_wid
 left join cidw.event_pass_dim epd on erpf.event_pass_wid  = epd.row_wid
@@ -27,7 +27,7 @@ UNION
  select distinct f.person_wid, f.brand_name as main_brand, s.brand_name as second_brand, s.engagement_type, s.engagement_date_wid from cidw.fact_engagement f
 left join
         (select person_wid, f.brand_name, engagement_type, engagement_date_wid, row_number() over (partition by person_wid, engagement_type, f.brand_name order by engagement_date_wid desc) as rnk from cidw.fact_engagement f
-        where f.brand_name in ('Interop', 'GDC', 'Black Hat', 'InformationWeek', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
+        where f.brand_name in ('Interop', 'GDC', 'Black Hat', 'InformationWeek', 'Gamasutra', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
 and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Online','Webinar Registration') ) s on f.person_wid = s.person_wid
 left join cidw.event_reg_pass_fact erpf on f.engagement_link = erpf.event_reg_wid
 left join cidw.event_pass_dim epd on erpf.event_pass_wid  = epd.row_wid
@@ -39,7 +39,7 @@ UNION
  select distinct f.person_wid, f.brand_name as main_brand, s.brand_name as second_brand, s.engagement_type, s.engagement_date_wid from cidw.fact_engagement f
 left join
         (select person_wid, f.brand_name, engagement_type, engagement_date_wid, row_number() over (partition by person_wid, engagement_type, f.brand_name order by engagement_date_wid desc) as rnk from cidw.fact_engagement f
-        where f.brand_name in ('Interop', 'GDC', 'Enterprise Connect', 'InformationWeek', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
+        where f.brand_name in ('Interop', 'GDC', 'Enterprise Connect', 'InformationWeek', 'Gamasutra', 'Dark Reading', 'Network Computing', 'Data Center', 'No Jitter')
 and f.engagement_type in ('Event Registration', 'Newsletter Subscription', 'PageView','Online','Webinar Registration') ) s on f.person_wid = s.person_wid
 left join cidw.event_reg_pass_fact erpf on f.engagement_link = erpf.event_reg_wid
 left join cidw.event_pass_dim epd on erpf.event_pass_wid  = epd.row_wid
