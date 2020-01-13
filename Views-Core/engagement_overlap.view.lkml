@@ -40,6 +40,8 @@ left join cidw.product_dim p on f.brand_wid = p.row_wid
 where p.product_brand = 'Data Center'
 and rnk = 1 and s.person_wid is not null
        ;;
+    datagroup_trigger: basic_cache
+    distribution_style: all
   }
   dimension: person_wid {
     type: number
