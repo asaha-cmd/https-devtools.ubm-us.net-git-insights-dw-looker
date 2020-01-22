@@ -48,6 +48,9 @@ and epd.pass_type = 'Paid'
 --and rnk <= 10
 and s.person_wid is not null and f.engagement_type = 'Event Registration'
              ;;
+    datagroup_trigger: basic_cache
+    distribution_style: all
+
   }
   dimension: person_wid {
     type: number
