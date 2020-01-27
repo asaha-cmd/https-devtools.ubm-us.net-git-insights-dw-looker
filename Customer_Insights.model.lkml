@@ -14,7 +14,7 @@ access_grant: developer_access {
 
 datagroup: basic_cache {
   max_cache_age: "24 hours"
-  sql_trigger: SELECT max(warehouse_update_date_wid) FROM cidw.person_dim ;;
+sql_trigger: SELECT max(file_timestamp) FROM cidw.fact_file_count ;;
 }
 persist_with: basic_cache
 case_sensitive: no
