@@ -4,6 +4,7 @@ view: person_permissions {
     ;;
     datagroup_trigger: basic_cache
     distribution_style: all
+    indexes: ["status", "person_wid"]
   }
 
   dimension: person_wid {
