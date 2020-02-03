@@ -169,7 +169,7 @@ dimension: city {
   }
 
   measure: number_of_distinct_people_by_email_address {
-    label: "Count of Distinct Persons for {% assign words = _explore._name | split: '_' %}{% for word in words %} {{ word | capitalize }}{% endfor %}"
+    label: "Count of Distinct Persons (by Email) for {% assign words = _explore._name | split: '_' %}{% for word in words %} {{ word | capitalize }}{% endfor %}"
     type: count_distinct
     description: "Count of Distinct People by Email Address"
     sql: ${email_address} ;;
