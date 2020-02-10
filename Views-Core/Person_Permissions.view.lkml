@@ -2,6 +2,7 @@ view: person_permissions {
   derived_table: {
     sql: select person_wid, status, brand_wid, 'Global' as permission, permission_date_wid from cidw.fact_global_permission where permission = 'Global'
     ;;
+    publish_as_db_view: yes
     datagroup_trigger: basic_cache
     distribution_style: all
     indexes: ["status", "person_wid"]
