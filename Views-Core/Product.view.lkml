@@ -112,8 +112,9 @@ view: product {
     hidden:  yes
   }
 
-  dimension: brand_list_it {
-    label: "Brand List (IT)"
+  dimension: media_brand_list_mem_tech {
+    alias: [brand_list_it]
+    label: "Media Brand List (Mem Tech)"
     hidden: yes
     case: {
       when: {
@@ -153,14 +154,58 @@ view: product {
         sql: ${product_brand} = 'No Jitter' ;;
         label: "No Jitter"
       }
+      when: {
+        sql: ${product_brand} = 'WorkSpace Connect' ;;
+        label: "WorkSpace Connect"
+      }
     }
   }
 
-  filter: it_media_brands {
-    label: "Brands IT Media"
+  filter: media_brands_mem_tech {
+    alias: [it_media_brands]
+    label: "Media Brands MEM Tech"
     type: string
-    suggest_dimension: product.brand_list_it
-    sql: {% condition it_media_brands %} ${product_brand} {% endcondition %} ;;
+    suggest_dimension: product.media_brand_list_mem_tech
+    sql: {% condition media_brands_mem_tech %} ${product_brand} {% endcondition %} ;;
+  }
+
+  dimension: event_brand_list_mem_tech {
+    label: "Event Brand List (Mem Tech)"
+    hidden: yes
+    case: {
+      when: {
+        sql: ${product_brand} = 'Black Hat' ;;
+        label: "Black Hat"
+      }
+      when: {
+        sql: ${product_brand} = 'GDC' ;;
+        label: "GDC"
+      }
+      when: {
+        sql: ${product_brand} = 'Enterprise Connect' ;;
+        label: "Enterprise Connect"
+      }
+      when: {
+        sql: ${product_brand} ILIKE 'Workspace Connect' ;;
+        label: "Workspace Connect"
+      }
+      when: {
+        sql: ${product_brand} = 'Interop' ;;
+        label: "Interop"
+
+      }
+      when: {
+        sql: ${product_brand} = 'Data Center World' ;;
+        label: "Data Center World"
+      }
+    }
+  }
+
+  filter: event_brands_mem_tech {
+    label: "Event Brands MEM Tech"
+    type: string
+    suggest_dimension: product.event_brand_list_mem_tech
+    sql: {% condition event_brands_mem_tech %} ${product_brand} {% endcondition %} ;;
   }
 
 
