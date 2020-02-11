@@ -118,6 +118,15 @@ view: event_registration_fact {
     type: count
   }
 
+  dimension:weekout {
+    label: "Weeks Out"
+    type: number
+    description: "Weeks Out Difference from Reigstration Date to start of event"
+    sql: datediff('week',${registration.calendar_date}, product_start.calendar_date) ;;
+    #sql: abs((diff_days(${product_start.calendar_date},${registration.calendar_week})/7)) ;;
+    }
+
+
   dimension: warehouse_date_wid {
     hidden: yes
     required_access_grants: [developer_access]
