@@ -1,3 +1,5 @@
+include: "/Views-Core/*.view.lkml"
+
 view: event_registration_fact {
   sql_table_name: cidw.event_registration_fact ;;
 
@@ -122,8 +124,7 @@ view: event_registration_fact {
     label: "Weeks Out"
     type: number
     description: "Weeks Out Difference from Reigstration Date to start of event"
-    sql: datediff('week',${registration.calendar_date}, product_start.calendar_date) ;;
-    #sql: abs((diff_days(${product_start.calendar_date},${registration.calendar_week})/7)) ;;
+    sql: datediff('week',${registration.calendar_date}, ${product_start.calendar_date}) ;;
     }
 
 

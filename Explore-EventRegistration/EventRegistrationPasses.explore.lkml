@@ -39,6 +39,13 @@ explore: event_registration_passes {
     sql_on: ${event_registration_passes.product_wid} =${product.row_wid};;
   }
 
+  join: product_start {
+    view_label: "Product"
+    from:day_dim
+    relationship: one_to_one
+    sql_on: ${product_start.row_wid} = ${product.start_date_wid} ;;
+  }
+
   join: pass {
     view_label: "Event Registration Passes"
     from: day_dim
