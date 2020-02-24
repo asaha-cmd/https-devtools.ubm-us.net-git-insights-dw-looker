@@ -162,4 +162,54 @@ explore: event_registration {
     relationship: one_to_one
     sql_on: ${data_source.row_wid} = ${event_registration.data_source_wid} ;;
   }
+
+  join: alumni_brand {
+    required_access_grants: [developer_access]
+    from: alumni
+    view_label: "Alumni (Brand)"
+    fields: [alumni_brand* ]
+    relationship: many_to_many
+    #sql_on: ${alumni_brand.alumni_level} = cast('Brand' as varchar(5)) and ${alumni_brand.person_wid} = ${event_registration.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
+    sql_on: ${alumni_brand.alumni_level} = 'Brand' and ${alumni_brand.person_wid} = ${event_registration.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
+    }
+
+  join: alumni_first_reg_brand {
+    required_access_grants: [developer_access]
+    from: day_dim
+    view_label: "Alumni (Brand)"
+    relationship: one_to_one
+    sql_on: ${alumni_brand.first_reg_date_wid} = ${alumni_first_reg_brand.row_wid} ;;
+  }
+
+  join: alumni_last_reg_brand {
+    required_access_grants: [developer_access]
+    from: day_dim
+    view_label: "Alumni (Brand)"
+    relationship: one_to_one
+    sql_on: ${alumni_brand.last_reg_date_wid} = ${alumni_last_reg_brand.row_wid} ;;
+  }
+
+  join: alumni_event {
+    required_access_grants: [developer_access]
+    from: alumni
+    view_label: "Alumni (Event)"
+    relationship: many_to_many
+    sql_on: ${alumni_brand.alumni_level} = 'Event' and ${alumni_brand.person_wid} = ${event_registration.person_wid} and ${alumni_brand.alumni_name} = ${product.product_subbrand} ;;
+  }
+  join: alumni_first_reg_event {
+    required_access_grants: [developer_access]
+    from: day_dim
+    view_label: "Alumni (Event)"
+    relationship: one_to_one
+    sql_on: ${alumni_event.first_reg_date_wid} = ${alumni_first_reg_event.row_wid} ;;
+  }
+
+  join: alumni_last_reg_event {
+    required_access_grants: [developer_access]
+    from: day_dim
+    view_label: "Alumni (Event)"
+    relationship: one_to_one
+    sql_on: ${alumni_event.last_reg_date_wid} = ${alumni_last_reg_event.row_wid} ;;
+  }
+
 }
