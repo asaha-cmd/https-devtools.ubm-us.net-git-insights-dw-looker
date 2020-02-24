@@ -1,7 +1,9 @@
 include: "/Views-Core/*.view.lkml"
 include: "/Views-EventRegistration/*.view.lkml"
+include: "/Explore-People/Alumni.explore.lkml"
 
 explore: event_registration {
+  view_name: event_registration
   group_label: "Event Registration"
   from:event_registration_fact
   label: "Event Registration Details"
@@ -162,6 +164,8 @@ explore: event_registration {
     relationship: one_to_one
     sql_on: ${data_source.row_wid} = ${event_registration.data_source_wid} ;;
   }
+
+  extends: [alumni_brand,alumni_event]
 
   join: alumni_brand {
     required_access_grants: [developer_access]
