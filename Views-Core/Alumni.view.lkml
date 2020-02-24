@@ -47,14 +47,6 @@ view: alumni {
     sql: ${TABLE}.last_reg_date_wid ;;
   }
 
-  set:  alumni_event {
-    fields: [event_count, event_name, total_event_count]
-  }
-
-  set:  alumni_brand {
-    fields: [brand_count, brand_name, total_brand_count]
-    }
-
   dimension: alumni_name {
     type: string
     hidden: yes
@@ -70,27 +62,38 @@ view: alumni {
     hidden: yes
     sql: ${TABLE}.alumni_count ;;
   }
-  dimension: event_name {
-    type: string
-    sql: case when ${TABLE}.alumni_level = 'Event' then ${TABLE}.alumni_name else null END;;
-  }
+}
+
+view: alumni_brand {
+  extends: [alumni]
   dimension: brand_name {
     type: string
     sql: case when ${TABLE}.alumni_level = 'Brand' then ${TABLE}.alumni_name else null END;;
-  }
-  dimension: event_count {
-    type: number
-    sql: case when ${TABLE}.alumni_level = 'Event' then ${TABLE}.alumni_count else null END;;
   }
   dimension: brand_count {
     type: number
     sql: case when ${TABLE}.alumni_level = 'Brand' then ${TABLE}.alumni_count else null END;;
   }
-
   measure: total_brand_count {
     type: sum
     label: "Total Count"
     sql: case when ${TABLE}.alumni_level = 'Brand' then ${TABLE}.alumni_count else null END ;;
+  }
+  set:  alumni_brand {
+    fields: [brand_count, brand_name, total_brand_count]
+  }
+}
+
+view: alumni_event {
+  extends: [alumni]
+  dimension: event_name {
+    type: string
+    sql: case when ${TABLE}.alumni_level = 'Event' then ${TABLE}.alumni_name else null END;;
+  }
+
+  dimension: event_count {
+    type: number
+    sql: case when ${TABLE}.alumni_level = 'Event' then ${TABLE}.alumni_count else null END;;
   }
 
   measure: total_event_count {
@@ -98,5 +101,7 @@ view: alumni {
     label: "Total Count"
     sql: case when ${TABLE}.alumni_level = 'Event' then ${TABLE}.alumni_count else null END ;;
   }
-
+  set:  alumni_event {
+    fields: [event_count, event_name, total_event_count]
+  }
   }
