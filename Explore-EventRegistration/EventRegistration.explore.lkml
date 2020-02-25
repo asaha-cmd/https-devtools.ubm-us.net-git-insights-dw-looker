@@ -3,6 +3,7 @@ include: "/Views-EventRegistration/*.view.lkml"
 include: "/Explore-People/Alumni.explore.lkml"
 
 explore: event_registration {
+  hidden: no
   view_name: event_registration
   group_label: "Event Registration"
   from:event_registration_fact
