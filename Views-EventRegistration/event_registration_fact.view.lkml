@@ -1,6 +1,7 @@
 include: "/Views-Core/*.view.lkml"
 
 view: event_registration_fact {
+  view_label: "Event Registration Details"
   sql_table_name: cidw.event_registration_fact ;;
 
   dimension: cancellation_date_wid {

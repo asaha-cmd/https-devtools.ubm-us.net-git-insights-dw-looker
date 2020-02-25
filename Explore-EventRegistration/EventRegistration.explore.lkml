@@ -168,7 +168,6 @@ explore: event_registration {
   extends: [alumni_brand,alumni_event]
 
 
-
   join: alumni_event {
     required_access_grants: [developer_access]
     from: alumni_event
