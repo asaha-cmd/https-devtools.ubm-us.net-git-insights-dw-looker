@@ -1,7 +1,6 @@
 include: "/Views-Core/*.view.lkml"
 
 view: event_registration_fact {
-  view_label: "Event Registration Details"
   sql_table_name: cidw.event_registration_fact ;;
 
   dimension: cancellation_date_wid {
@@ -19,11 +18,13 @@ view: event_registration_fact {
   }
 
   dimension: confirmation_number {
+    view_label: "Event Registration Details"
     type: string
     sql: ${TABLE}.confirmation_number ;;
   }
 
   dimension: data_source_wid {
+    view_label: "Event Registration Details"
     required_access_grants: [developer_access]
     type: number
     value_format_name: id
@@ -86,6 +87,7 @@ view: event_registration_fact {
   }
 
   dimension: registration_flag {
+    view_label: "Event Registration Details"
     type: string
     sql: ${TABLE}.registration_flag ;;
   }
@@ -99,11 +101,13 @@ view: event_registration_fact {
   }
 
   dimension: total_collected {
+    view_label: "Event Registration Details"
     type: number
     sql: ${TABLE}.total_collected ;;
   }
 
   measure: sum_total_collected {
+    view_label: "Event Registration Details"
     type: sum_distinct
     sql_distinct_key: ${row_wid} ;;
     sql: ${total_collected} ;;
@@ -111,6 +115,7 @@ view: event_registration_fact {
   }
 
   measure: average_total_collected {
+    view_label: "Event Registration Details"
     type: average_distinct
     sql_distinct_key: ${row_wid} ;;
     sql: ${total_collected} ;;
@@ -118,10 +123,12 @@ view: event_registration_fact {
   }
 
   measure: count {
+    hidden: yes
     type: count
   }
 
   dimension:weekout {
+    view_label: "Event Registration Details"
     label: "Weeks Out"
     type: number
     description: "Weeks Out Difference from Reigstration Date to start of event"
