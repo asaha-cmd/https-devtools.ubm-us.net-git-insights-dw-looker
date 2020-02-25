@@ -3,7 +3,7 @@ include: "/Views-Core/*.view.lkml"
 explore: alumni_brand {
   view_name: alumni_brand
   view_label: "Alumni (Brand)"
-  #hidden: yes
+  hidden: yes
   #join: person {
   #  required_access_grants: [developer_access]
   #  from: person
@@ -41,6 +41,7 @@ explore: alumni_brand {
 explore: alumni_event {
   view_name: alumni_event
   view_label: "Alumni (Event)"
+  hidden: yes
 
   #join: person {
   #  required_access_grants: [developer_access]

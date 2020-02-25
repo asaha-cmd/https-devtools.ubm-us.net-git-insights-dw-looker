@@ -1,6 +1,8 @@
 include: "/Views-Core/*.view.lkml"
+include: "/Explore-People/Alumni.explore.lkml"
 
 explore: fact_engagement {
+  view_name: fact_engagement
   group_label: "People"
   label: "Engagement"
   view_label: "Engagement"
@@ -59,5 +61,21 @@ explore: fact_engagement {
     sql_on: ${person_permissions.permission_date_wid} = ${permission.row_wid} ;;
   }
 
+  extends: [alumni_brand,alumni_event]
+
+  join: alumni_event {
+    required_access_grants: [developer_access]
+    from: alumni_event
+    view_label: "Alumni (Event)"
+    relationship: many_to_many
+    sql_on: ${alumni_event.alumni_level} = 'Event' and ${alumni_event.person_wid} = ${person.person_wid} and ${alumni_event.alumni_name} = ${product.product_subbrand} ;;
+  }
+  join: alumni_brand {
+    required_access_grants: [developer_access]
+    from: alumni_brand
+    view_label: "Alumni (Brand)"
+    relationship: many_to_many
+    sql_on: ${alumni_brand.alumni_level} = 'Brand' and ${alumni_brand.person_wid} = ${person.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
+  }
 
 }

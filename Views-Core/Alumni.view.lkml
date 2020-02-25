@@ -68,15 +68,18 @@ view: alumni_brand {
   extends: [alumni]
   dimension: brand_name {
     type: string
+    description: "Brand Level Name of Alumni for events"
     sql: case when ${TABLE}.alumni_level = 'Brand' then ${TABLE}.alumni_name else null END;;
   }
   dimension: brand_count {
     type: number
+    description: "Number of events registered under this brand"
     sql: case when ${TABLE}.alumni_level = 'Brand' then ${TABLE}.alumni_count else null END;;
   }
   measure: total_brand_count {
     type: sum
     label: "Total Count"
+    description: "Count of Users Per Number of Events under this brand"
     sql: case when ${TABLE}.alumni_level = 'Brand' then ${TABLE}.alumni_count else null END ;;
   }
   set:  alumni_brand {
@@ -88,17 +91,20 @@ view: alumni_event {
   extends: [alumni]
   dimension: event_name {
     type: string
+    description: "Event Level Name of Alumni for the events sub brand"
     sql: case when ${TABLE}.alumni_level = 'Event' then ${TABLE}.alumni_name else null END;;
   }
 
   dimension: event_count {
     type: number
+    description: "Number of events registered under this events sub brand"
     sql: case when ${TABLE}.alumni_level = 'Event' then ${TABLE}.alumni_count else null END;;
   }
 
   measure: total_event_count {
     type: sum
     label: "Total Count"
+    description: "Count of Users Per Number of Events under this sub brand"
     sql: case when ${TABLE}.alumni_level = 'Event' then ${TABLE}.alumni_count else null END ;;
   }
   set:  alumni_event {
