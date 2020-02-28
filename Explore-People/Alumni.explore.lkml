@@ -23,7 +23,7 @@ explore: alumni_brand {
   #}
 
   join: alumni_first_reg_brand {
-    required_access_grants: [developer_access]
+    required_access_grants: [insights_access]
     from: day_dim
     view_label: "Alumni (Brand)"
     relationship: one_to_one
@@ -31,7 +31,7 @@ explore: alumni_brand {
   }
 
   join: alumni_last_reg_brand {
-    required_access_grants: [developer_access]
+    required_access_grants: [insights_access]
     from: day_dim
     view_label: "Alumni (Brand)"
     relationship: one_to_one
@@ -60,7 +60,7 @@ explore: alumni_event {
   #}
 
   join: alumni_first_reg_event {
-    required_access_grants: [developer_access]
+    required_access_grants: [insights_access]
     from: day_dim
     view_label: "Alumni (Event)"
     relationship: one_to_one
@@ -68,7 +68,7 @@ explore: alumni_event {
   }
 
   join: alumni_last_reg_event {
-    required_access_grants: [developer_access]
+    required_access_grants: [insights_access]
     from: day_dim
     view_label: "Alumni (Event)"
     relationship: one_to_one
