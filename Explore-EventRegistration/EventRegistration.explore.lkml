@@ -170,7 +170,7 @@ explore: event_registration {
 
 
   join: alumni_event {
-    required_access_grants: [developer_access]
+    required_access_grants: [insights_access]
     from: alumni_event
     view_label: "Alumni (Event)"
     #fields: [ALL_FIELDS*,-alumni.alumni_brand* ]
@@ -178,7 +178,7 @@ explore: event_registration {
     sql_on: ${alumni_event.alumni_level} = 'Event' and ${alumni_event.person_wid} = ${person.person_wid} and ${alumni_event.alumni_name} = ${product.product_subbrand} ;;
   }
   join: alumni_brand {
-    required_access_grants: [developer_access]
+    required_access_grants: [insights_access]
     from: alumni_brand
     view_label: "Alumni (Brand)"
     #fields: [ALL_FIELDS*,-alumni.alumni_event* ]
