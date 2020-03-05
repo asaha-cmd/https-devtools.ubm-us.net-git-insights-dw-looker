@@ -255,6 +255,20 @@ view: fact_engagement {
     }
   }
 
+  dimension: is_net_new {
+    label: "Net New"
+    description: "Activity resulted in new user"
+    type:  yesno
+    sql: CASE WHEN ${TABLE}.engagement_link = person.initial_fact_wid and person.initial_table_source = ${TABLE}.engagement_table_source THEN true ELSE false END;;
+  }
+
+  dimension: possibly_net_new {
+    label: "Net New  [Possibly]"
+    description: "User created on same day as activity"
+    type:  yesno
+    sql: CASE WHEN ${TABLE}.engagement_date_wid = person.created_date_wid THEN true ELSE false END;;
+  }
+
   measure: engagement_count {
     type: count
     drill_fields: [site_name, asset_name, product_name, brand_name]

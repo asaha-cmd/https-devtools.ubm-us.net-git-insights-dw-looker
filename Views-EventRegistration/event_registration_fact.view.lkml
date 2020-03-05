@@ -152,4 +152,20 @@ view: event_registration_fact {
     sql: ${TABLE}.warehouse_update_date_wid ;;
   }
 
+  dimension: is_net_new {
+    label: "Net New"
+    description: "Activity resulted in new user"
+    type:  yesno
+    sql: CASE WHEN ${TABLE}.row_wid = person.initial_fact_wid and person.initial_table_source = 'event_registration_fact' THEN true ELSE false END;;
+  }
+
+  dimension: possibly_net_new {
+    label: "Net New [Possibly]"
+    description: "User created on same day as activity"
+    type:  yesno
+    sql: CASE WHEN ${TABLE}.activity_date_wid = person.created_date_wid THEN true ELSE false END;;
+  }
+
+
+
 }
