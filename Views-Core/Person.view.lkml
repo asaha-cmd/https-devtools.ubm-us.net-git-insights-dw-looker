@@ -154,6 +154,19 @@ dimension: city {
     type:  string
   }
 
+  dimension: initial_engagement_type {
+    type: string
+  }
+
+  dimension: initial_fact_wid {
+    type: number
+    hidden: yes
+  }
+
+  dimension: initial_table_source {
+    type: string
+    hidden: yes
+  }
   dimension: emailable {
     type: yesno
     sql: ${person.hard_bounced} = 'N'
