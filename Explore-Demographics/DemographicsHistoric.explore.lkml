@@ -78,7 +78,7 @@ explore: demographics_historic {
   }
 
   join: historic {
-    view_label: "Historic Demographics"
+    view_label: "Demographic Date"
     from: day_dim
     type: left_outer
     sql_on:  ${demographics_historic.created_date_wid} = ${historic.row_wid} ;;
@@ -98,7 +98,7 @@ explore: demographics_historic {
     sql_on: ${person.person_wid} = ${person_permissions.person_wid} ;;
   }
   join: audience_group {
-    view_label: "Historic Demographics"
+    view_label: "Demographic"
     type: left_outer
     sql_on: ${demographics_historic.audience_group_wid} = ${audience_group.row_wid} ;;
     relationship: many_to_one
