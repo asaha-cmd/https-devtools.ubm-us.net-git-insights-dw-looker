@@ -70,6 +70,15 @@ view: fact_net_new_person {
     sql: ${TABLE}.warehouse_date_wid ;;
   }
 
+  dimension: net_new_link_wid {
+    type: number
+    hidden: yes
+  }
+
+  dimension: net_new_table_source {
+    type: string
+    hidden: yes
+  }
   measure: Count_Net_New {
     type: count_distinct
     sql: {$TABLE}.person_wid ;;

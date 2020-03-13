@@ -32,9 +32,14 @@ view: product {
   dimension: product_brand {
     type: string
     sql: ${TABLE}.product_brand ;;
-    drill_fields: [product_title]
+    drill_fields: [product_subbrand, product_title]
     }
 
+  dimension: product_subbrand {
+    type: string
+    sql: ${TABLE}.secondary_brand ;;
+    drill_fields: [product_title]
+  }
   dimension: is_event {
     type:  yesno
     sql: CASE WHEN ${TABLE}.event_code is not null and ${TABLE}.event_code != '' THEN true ELSE false END;;

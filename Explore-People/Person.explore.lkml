@@ -1,6 +1,7 @@
 include: "/Views-Core/*.view.lkml"
 
 explore: person {
+  view_name: person
   group_label: "People"
   description: "Base details around a person in the DW"
   join: data_source {
@@ -38,4 +39,5 @@ explore: person {
     relationship: one_to_one
     sql_on: ${last_engagement.row_wid} = ${person.created_date_wid} ;;
   }
+
 }

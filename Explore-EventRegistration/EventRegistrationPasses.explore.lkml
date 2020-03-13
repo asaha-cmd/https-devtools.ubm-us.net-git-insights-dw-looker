@@ -2,8 +2,10 @@ include: "/Views-Core/*.view.lkml"
 include: "/Views-EventRegistration/*.view.lkml"
 
 explore: event_registration_passes {
+  view_name: event_registration_passes
   group_label: "Event Registration"
   from:  event_reg_pass_fact
+  label: "Event Registration Pass"
   description: "Pass details for Event Registrations"
 
   join: event_pass_dim {

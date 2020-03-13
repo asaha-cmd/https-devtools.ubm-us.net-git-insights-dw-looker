@@ -1,7 +1,11 @@
 include: "/Views-Core/*.view.lkml"
 include: "/Views-EventRegistration/*.view.lkml"
+include: "/Explore-People/Alumni.explore.lkml"
+include: "/Explore-Demographics/DemographicsHistoric.explore.lkml"
 
 explore: event_registration {
+  hidden: no
+  view_name: event_registration
   group_label: "Event Registration"
   from:event_registration_fact
   label: "Event Registration Details"
@@ -162,4 +166,32 @@ explore: event_registration {
     relationship: one_to_one
     sql_on: ${data_source.row_wid} = ${event_registration.data_source_wid} ;;
   }
+
+  extends: [alumni_brand,alumni_event]
+  join: alumni_event {
+    required_access_grants: [insights_access]
+    from: alumni_event
+    view_label: "Alumni (Event)"
+    #fields: [ALL_FIELDS*,-alumni.alumni_brand* ]
+    relationship: many_to_many
+    sql_on: ${alumni_event.alumni_level} = 'Event' and ${alumni_event.person_wid} = ${person.person_wid} and ${alumni_event.alumni_name} = ${product.product_subbrand} ;;
+  }
+  join: alumni_brand {
+    required_access_grants: [insights_access]
+    from: alumni_brand
+    view_label: "Alumni (Brand)"
+    #fields: [ALL_FIELDS*,-alumni.alumni_event* ]
+    relationship: many_to_many
+    #sql_on: ${alumni_brand.alumni_level} = cast('Brand' as varchar(5)) and ${alumni_brand.person_wid} = ${event_registration.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
+    sql_on: ${alumni_brand.alumni_level} = 'Brand' and ${alumni_brand.person_wid} = ${person.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
+  }
+  extends: [demographics_historic]
+  join: demographics_historic {
+    required_access_grants: [insights_access]
+    view_label: "Demographic"
+    relationship: many_to_many
+    #sql_on: ${alumni_brand.alumni_level} = cast('Brand' as varchar(5)) and ${alumni_brand.person_wid} = ${event_registration.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
+    sql_on:  ${demographics_historic.person_wid} = ${person.person_wid} and ${demographics_historic.product_wid} = ${product.row_wid} ;;
+  }
+
 }

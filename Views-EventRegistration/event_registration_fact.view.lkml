@@ -18,11 +18,13 @@ view: event_registration_fact {
   }
 
   dimension: confirmation_number {
+    view_label: "Event Registration Details"
     type: string
     sql: ${TABLE}.confirmation_number ;;
   }
 
   dimension: data_source_wid {
+    view_label: "Event Registration Details"
     required_access_grants: [developer_access]
     type: number
     value_format_name: id
@@ -85,6 +87,7 @@ view: event_registration_fact {
   }
 
   dimension: registration_flag {
+    view_label: "Event Registration Details"
     type: string
     sql: ${TABLE}.registration_flag ;;
   }
@@ -98,11 +101,13 @@ view: event_registration_fact {
   }
 
   dimension: total_collected {
+    view_label: "Event Registration Details"
     type: number
     sql: ${TABLE}.total_collected ;;
   }
 
   measure: sum_total_collected {
+    view_label: "Event Registration Details"
     type: sum_distinct
     sql_distinct_key: ${row_wid} ;;
     sql: ${total_collected} ;;
@@ -110,6 +115,7 @@ view: event_registration_fact {
   }
 
   measure: average_total_collected {
+    view_label: "Event Registration Details"
     type: average_distinct
     sql_distinct_key: ${row_wid} ;;
     sql: ${total_collected} ;;
@@ -117,10 +123,12 @@ view: event_registration_fact {
   }
 
   measure: count {
+    hidden: yes
     type: count
   }
 
   dimension:weekout {
+    view_label: "Event Registration Details"
     label: "Weeks Out"
     type: number
     description: "Weeks Out Difference from Reigstration Date to start of event"
@@ -143,5 +151,21 @@ view: event_registration_fact {
     value_format_name: id
     sql: ${TABLE}.warehouse_update_date_wid ;;
   }
+
+  dimension: is_net_new {
+    label: "Net New"
+    description: "Activity resulted in new user"
+    type:  yesno
+    sql: CASE WHEN ${TABLE}.row_wid = person.initial_fact_wid and person.initial_table_source = 'event_registration_fact' THEN true ELSE false END;;
+  }
+
+  dimension: possibly_net_new {
+    label: "Net New [Possibly]"
+    description: "User created on same day as activity"
+    type:  yesno
+    sql: CASE WHEN ${TABLE}.activity_date_wid = person.created_date_wid THEN true ELSE false END;;
+  }
+
+
 
 }
