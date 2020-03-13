@@ -86,9 +86,16 @@ explore: demographics_historic {
   }
   join: person {
     type: left_outer
-    fields: [demographic_fields*]
+    #fields: [demographic_fields*]
     sql_on: ${demographics_historic.person_wid} = ${person.person_wid} ;;
     relationship: many_to_one
+  }
+  join: person_permissions {
+    view_label: "Person Permissions"
+    from:  person_permissions
+    type:  left_outer
+    relationship: many_to_many
+    sql_on: ${person.person_wid} = ${person_permissions.person_wid} ;;
   }
   join: audience_group {
     view_label: "Historic Demographics"
