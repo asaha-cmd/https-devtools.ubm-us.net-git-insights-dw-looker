@@ -85,4 +85,12 @@ explore: Online_Activity {
     sql_on: ${answer.row_wid} = ${question_answers.answer_wid} ;;
   }
 
+  join: data_source {
+    required_access_grants: [developer_access]
+    from: data_source
+    view_label: "Developer"
+    relationship: one_to_one
+    sql_on: ${data_source.row_wid} = ${Online_Activity.data_source_wid} ;;
+  }
+
 }

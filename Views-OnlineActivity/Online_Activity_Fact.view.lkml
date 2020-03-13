@@ -40,8 +40,8 @@ view: Online_Activity {
     type: number
     value_format_name: id
     sql: ${TABLE}.itc_code_wid ;;
-    hidden:  yes
-  }
+    required_access_grants: [developer_access]
+    }
 
   dimension: marketing_code_wid {
     type: number
