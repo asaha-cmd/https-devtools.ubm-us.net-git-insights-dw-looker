@@ -1,6 +1,7 @@
 include: "/Views-Core/*.view.lkml"
 include: "/Views-EventRegistration/*.view.lkml"
 include: "/Explore-People/Alumni.explore.lkml"
+include: "/Explore-Demographics/DemographicsHistoric.explore.lkml"
 
 explore: event_registration {
   hidden: no
@@ -167,8 +168,6 @@ explore: event_registration {
   }
 
   extends: [alumni_brand,alumni_event]
-
-
   join: alumni_event {
     required_access_grants: [insights_access]
     from: alumni_event
@@ -185,6 +184,14 @@ explore: event_registration {
     relationship: many_to_many
     #sql_on: ${alumni_brand.alumni_level} = cast('Brand' as varchar(5)) and ${alumni_brand.person_wid} = ${event_registration.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
     sql_on: ${alumni_brand.alumni_level} = 'Brand' and ${alumni_brand.person_wid} = ${person.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
+  }
+  extends: [demographics_historic]
+  join: demographics_historic {
+    required_access_grants: [insights_access]
+    view_label: "Demographic"
+    relationship: many_to_many
+    #sql_on: ${alumni_brand.alumni_level} = cast('Brand' as varchar(5)) and ${alumni_brand.person_wid} = ${event_registration.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
+    sql_on:  ${demographics_historic.person_wid} = ${person.person_wid} and ${demographics_historic.product_wid} = ${product.row_wid} ;;
   }
 
 }
