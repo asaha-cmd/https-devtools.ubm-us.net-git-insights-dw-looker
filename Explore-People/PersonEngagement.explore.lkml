@@ -7,6 +7,7 @@ explore: fact_engagement {
   label: "Engagement"
   view_label: "Engagement"
   description: "Consildated positive engagement data"
+  hidden: no
 
   join: engagement {
     view_label: "Engagement"
