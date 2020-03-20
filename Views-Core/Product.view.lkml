@@ -205,6 +205,11 @@ view: product {
       }
     }
   }
+  dimension: product_start_date_ts {
+    hidden: yes
+    type: date
+    sql: to_date(${TABLE}.start_date_wid, 'YYYYMMDD');;
+    }
 
   filter: event_brands_mem_tech {
     label: "Event Brands MEM Tech"
