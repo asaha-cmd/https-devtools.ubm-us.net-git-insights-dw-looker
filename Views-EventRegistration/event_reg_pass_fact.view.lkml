@@ -2,6 +2,7 @@ view: event_reg_pass_fact {
   sql_table_name: cidw.event_reg_pass_fact ;;
 
   dimension: calculated_amount {
+    value_format_name: usd
     type: number
     sql: ${TABLE}.calculated_amount ;;
   }
@@ -15,6 +16,7 @@ view: event_reg_pass_fact {
 
   dimension: discount_amount {
     type: number
+    value_format_name: usd
     sql: ${TABLE}.discount_amount ;;
   }
 
@@ -70,21 +72,21 @@ view: event_reg_pass_fact {
     type: sum_distinct
     sql_distinct_key: ${row_wid} ;;
     sql: ${total_before_discount} ;;
-    value_format_name: decimal_2
+    value_format_name: usd
     }
 
   measure: sum_calculated_amount{
     type: sum_distinct
     sql_distinct_key: ${row_wid} ;;
     sql: ${calculated_amount} ;;
-    value_format_name: decimal_2
+    value_format_name: usd
     }
 
   measure: sum_discount_amount{
     type: sum_distinct
     sql_distinct_key: ${row_wid} ;;
     sql: ${discount_amount} ;;
-    value_format_name: decimal_2
+    value_format_name: usd
     }
 
 
