@@ -168,7 +168,7 @@ explore: event_registration {
     sql_on: ${data_source.row_wid} = ${event_registration.data_source_wid} ;;
   }
 
-  extends: [alumni_brand,alumni_event]
+  extends: [alumni_brand,alumni_event,lead_scan,session_scan, demographics_historic]
   join: alumni_event {
     required_access_grants: [insights_access]
     from: alumni_event
@@ -186,7 +186,7 @@ explore: event_registration {
     #sql_on: ${alumni_brand.alumni_level} = cast('Brand' as varchar(5)) and ${alumni_brand.person_wid} = ${event_registration.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
     sql_on: ${alumni_brand.alumni_level} = 'Brand' and ${alumni_brand.person_wid} = ${person.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
   }
-  extends: [demographics_historic]
+
   join: demographics_historic {
     required_access_grants: [insights_access]
     view_label: "Demographic"
@@ -195,7 +195,6 @@ explore: event_registration {
     sql_on:  ${demographics_historic.person_wid} = ${person.person_wid} and ${demographics_historic.product_wid} = ${product.row_wid} ;;
   }
 
-  extends: [lead_scan,session_scan]
   join: fact_lead_scan_activity {
     view_label: "Lead Scan"
     relationship: one_to_many
