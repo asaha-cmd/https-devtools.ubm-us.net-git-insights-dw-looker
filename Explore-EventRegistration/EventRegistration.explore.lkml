@@ -167,26 +167,25 @@ explore: event_registration {
     sql_on: ${data_source.row_wid} = ${event_registration.data_source_wid} ;;
   }
 
+  extends: [alumni_ex]
   join: event_alumni_years {
     required_access_grants: [developer_access]
     view_label: "Alumni (related to Event)"
+
     relationship: one_to_one
 
-    sql_on: ${event_alumni_years.person_wid} = ${event_registration.person_wid} and ${event_alumni_years.product_event} = ${product.product_subbrand}
-;;
-  #  and ${event_alumni_years.registration_date_wid} < ${product.start_date_wid} and ${event_alumni_years.product_wid} != ${product.row_wid}
+    sql_on: ${event_alumni_years.person_wid} = ${event_registration.person_wid} and ${event_alumni_years.alumni_product_wid} = ${event_registration.product_wid}
+      ;;
 
   }
 
-  join: fact_alumni_event {
+  join: alumni_details {
     required_access_grants: [developer_access]
     view_label: "Alumni (related to Event)"
     relationship: one_to_one
-
-    sql_on: ${fact_alumni_event.person_wid} = ${event_registration.person_wid} and ${fact_alumni_event.product_event} = ${product.product_subbrand}
-    and ${fact_alumni_event.registration_date_wid} < ${product.start_date_wid} and ${fact_alumni_event.product_wid} != ${product.row_wid};;
-
+    sql_on: ${alumni_details.person_wid} = ${event_registration.person_wid} and  ${alumni_details.alumni_product_wid} = ${event_registration.product_wid};;
   }
+
   extends: [alumni_brand,alumni_event]
   join: alumni_event {
     required_access_grants: [insights_access]

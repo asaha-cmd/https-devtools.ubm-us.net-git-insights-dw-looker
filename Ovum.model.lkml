@@ -12,6 +12,11 @@ access_grant: developer_access {
   allowed_values: ["true"]
 }
 
+access_grant: insights_access {
+  user_attribute: insights_access
+  allowed_values: ["true"]
+}
+
 datagroup: basic_cache {
   max_cache_age: "24 hours"
   sql_trigger: SELECT max(file_timestamp) FROM cidw.fact_file_count ;;
