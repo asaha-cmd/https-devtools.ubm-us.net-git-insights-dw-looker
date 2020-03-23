@@ -1,6 +1,7 @@
 include: "/Views-Core/*.view.lkml"
 include: "/Views-EventRegistration/*.view.lkml"
 include: "/Explore-People/Alumni.explore.lkml"
+include: "/Explore-EventRegistration/*.explore.lkml"
 include: "/Explore-Demographics/DemographicsHistoric.explore.lkml"
 
 explore: event_registration {
@@ -194,4 +195,15 @@ explore: event_registration {
     sql_on:  ${demographics_historic.person_wid} = ${person.person_wid} and ${demographics_historic.product_wid} = ${product.row_wid} ;;
   }
 
+  extends: [lead_scan,session_scan]
+  join: fact_lead_scan_activity {
+    view_label: "Lead Scan"
+    relationship: one_to_many
+    sql_on:  ${fact_lead_scan_activity.person_wid} = ${person.person_wid} and ${fact_lead_scan_activity.product_wid} = ${product.row_wid} ;;
+  }
+  join: fact_session_scan_activity {
+    view_label: "Session Scan"
+    relationship: one_to_many
+    sql_on:  ${fact_session_scan_activity.person_wid} = ${person.person_wid} and ${fact_session_scan_activity.product_wid} = ${product.row_wid} ;;
+  }
 }
