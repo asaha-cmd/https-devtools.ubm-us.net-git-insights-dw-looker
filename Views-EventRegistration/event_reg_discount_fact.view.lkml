@@ -2,6 +2,7 @@ view: event_reg_discount_fact {
   sql_table_name: cidw.event_reg_discount_fact ;;
 
   dimension: amount {
+    value_format_name: usd
     type: number
     sql: ${TABLE}.amount ;;
   }

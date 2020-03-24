@@ -25,6 +25,7 @@ view: event_alumni_years {
       column: alumni_years {field: alumni_details.alumni_year_count}
       column: product_event {field: alumni_details.product_event}
       column: alumni_product_wid {field: alumni_details.alumni_product_wid}
+      #bind_all_filters: yes
       #bind_filters: {from_field:alumni_details.registration_flag to_field:alumni_details.registration_flag_f}
     }
   }

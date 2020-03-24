@@ -1,6 +1,7 @@
 include: "/Views-Core/*.view.lkml"
 include: "/Views-EventRegistration/*.view.lkml"
 include: "/Explore-People/Alumni.explore.lkml"
+include: "/Explore-EventRegistration/*.explore.lkml"
 include: "/Explore-Demographics/DemographicsHistoric.explore.lkml"
 
 explore: event_registration {
@@ -166,8 +167,8 @@ explore: event_registration {
     relationship: one_to_one
     sql_on: ${data_source.row_wid} = ${event_registration.data_source_wid} ;;
   }
+  extends: [alumni_brand,alumni_event,alumni_ex,lead_scan,session_scan, demographics_historic]
 
-  extends: [alumni_ex]
   join: event_alumni_years {
     required_access_grants: [developer_access]
     view_label: "Alumni (related to Event)"
@@ -186,7 +187,7 @@ explore: event_registration {
     sql_on: ${alumni_details.person_wid} = ${event_registration.person_wid} and  ${alumni_details.alumni_product_wid} = ${event_registration.product_wid};;
   }
 
-  extends: [alumni_brand,alumni_event]
+
   join: alumni_event {
     required_access_grants: [insights_access]
     from: alumni_event
@@ -204,7 +205,7 @@ explore: event_registration {
     #sql_on: ${alumni_brand.alumni_level} = cast('Brand' as varchar(5)) and ${alumni_brand.person_wid} = ${event_registration.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
     sql_on: ${alumni_brand.alumni_level} = 'Brand' and ${alumni_brand.person_wid} = ${person.person_wid} and ${alumni_brand.alumni_name} = ${product.product_brand} ;;
   }
-  extends: [demographics_historic]
+
   join: demographics_historic {
     required_access_grants: [insights_access]
     view_label: "Demographic"
@@ -213,4 +214,14 @@ explore: event_registration {
     sql_on:  ${demographics_historic.person_wid} = ${person.person_wid} and ${demographics_historic.product_wid} = ${product.row_wid} ;;
   }
 
+  join: fact_lead_scan_activity {
+    view_label: "Lead Scan"
+    relationship: one_to_many
+    sql_on:  ${fact_lead_scan_activity.person_wid} = ${person.person_wid} and ${fact_lead_scan_activity.product_wid} = ${product.row_wid} ;;
+  }
+  join: fact_session_scan_activity {
+    view_label: "Session Scan"
+    relationship: one_to_many
+    sql_on:  ${fact_session_scan_activity.person_wid} = ${person.person_wid} and ${fact_session_scan_activity.product_wid} = ${product.row_wid} ;;
+  }
 }

@@ -103,6 +103,7 @@ view: event_registration_fact {
   dimension: total_collected {
     view_label: "Event Registration Details"
     type: number
+    value_format_name: usd
     sql: ${TABLE}.total_collected ;;
   }
 
@@ -111,15 +112,15 @@ view: event_registration_fact {
     type: sum_distinct
     sql_distinct_key: ${row_wid} ;;
     sql: ${total_collected} ;;
-    value_format_name: decimal_2
-  }
+    value_format_name: usd
+    }
 
   measure: average_total_collected {
     view_label: "Event Registration Details"
     type: average_distinct
     sql_distinct_key: ${row_wid} ;;
     sql: ${total_collected} ;;
-    value_format_name: decimal_2
+    value_format_name: usd
   }
 
   measure: count {
