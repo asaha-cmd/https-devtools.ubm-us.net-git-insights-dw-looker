@@ -81,7 +81,7 @@ view: fact_net_new_person {
   }
   measure: Count_Net_New {
     type: count_distinct
-    sql: {$TABLE}.person_wid ;;
+    sql: ${TABLE}.person_wid ;;
     drill_fields: []
   }
 }
