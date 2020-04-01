@@ -201,7 +201,7 @@ view: product {
       }
       when: {
         sql: ${product_brand} = 'Data Center' ;;
-        label: "Data Center World"
+        label: "Data Center"
       }
     }
   }
