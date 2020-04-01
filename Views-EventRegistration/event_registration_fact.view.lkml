@@ -107,6 +107,55 @@ view: event_registration_fact {
     sql: ${TABLE}.total_collected ;;
   }
 
+  dimension: annual_budget {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+
+    type:  string
+  }
+  dimension: company_revenue {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+  dimension: company_size {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+  dimension: job_function {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+  dimension: job_level {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+  dimension: industry {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+  dimension: product_interests {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+
+  dimension: purchase_influence {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+
+  dimension: purchase_role {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+
   measure: sum_total_collected {
     view_label: "Event Registration Details"
     type: sum_distinct
