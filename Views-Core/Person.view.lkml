@@ -134,6 +134,10 @@ dimension: city {
     type:  string
   }
 
+  dimension: pending_delete_date_wid {
+    type:  string
+    hidden: yes
+  }
 
   dimension: job_title {
     type:  string

@@ -14,6 +14,7 @@ left join (select demographic_wid, demographic_value_wid as purchase_role_wid fr
        ;;
     datagroup_trigger: basic_cache
     distribution_style: all
+    indexes: ["product_wid", "person_wid" ]
   }
 
   dimension: product_wid {

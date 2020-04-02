@@ -200,8 +200,8 @@ view: product {
 
       }
       when: {
-        sql: ${product_brand} = 'Data Center World' ;;
-        label: "Data Center World"
+        sql: ${product_brand} = 'Data Center' ;;
+        label: "Data Center"
       }
     }
   }

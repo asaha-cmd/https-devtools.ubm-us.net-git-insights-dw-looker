@@ -107,6 +107,55 @@ view: event_registration_fact {
     sql: ${TABLE}.total_collected ;;
   }
 
+  dimension: annual_budget {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+
+    type:  string
+  }
+  dimension: company_revenue {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+  dimension: company_size {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+  dimension: job_function {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+  dimension: job_level {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+  dimension: industry {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+  dimension: product_interests {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+
+  dimension: purchase_influence {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+
+  dimension: purchase_role {
+    view_label: "Event Registration Demographics"
+    description: "Aggregated value of form for the event"
+    type:  string
+  }
+
   measure: sum_total_collected {
     view_label: "Event Registration Details"
     type: sum_distinct
@@ -154,17 +203,19 @@ view: event_registration_fact {
   }
 
   dimension: is_net_new {
+    view_label: "Person"
     label: "Net New"
     description: "Activity resulted in new user"
     type:  yesno
-    sql: CASE WHEN ${TABLE}.row_wid = person.initial_fact_wid and person.initial_table_source = 'event_registration_fact' THEN true ELSE false END;;
+    sql: CASE WHEN ${TABLE}.row_wid = ${person.initial_fact_wid} and ${person.initial_table_source} = 'event_registration_fact' THEN true ELSE false END;;
   }
 
   dimension: possibly_net_new {
+    view_label: "Person"
     label: "Net New [Possibly]"
     description: "User created on same day as activity"
     type:  yesno
-    sql: CASE WHEN ${TABLE}.activity_date_wid = person.created_date_wid THEN true ELSE false END;;
+    sql: CASE WHEN ${TABLE}.registration_date_wid = ${person.created_date_wid} THEN true ELSE false END;;
   }
 
 
