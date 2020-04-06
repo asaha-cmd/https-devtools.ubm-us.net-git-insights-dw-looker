@@ -1,8 +1,10 @@
 include: "/Views-Core/*.view.lkml"
 include: "/Views-EventRegistration/*.view.lkml"
 include: "/Explore-People/Alumni.explore.lkml"
-include: "/Explore-EventRegistration/*.explore.lkml"
 include: "/Explore-Demographics/DemographicsHistoric.explore.lkml"
+include: "/Explore-EventRegistration/LeadScan.explore.lkml"
+include: "/Explore-EventRegistration/SessionScan.explore.lkml"
+
 
 explore: event_registration {
   hidden: no
@@ -172,20 +174,9 @@ explore: event_registration {
   join: alumni_event_years {
     required_access_grants: [developer_access]
     view_label: "Alumni (related to Event)"
-
-    relationship: one_to_one
-
-    sql_on: ${alumni_event_years.person_wid} = ${event_registration.person_wid} and ${alumni_event_years.alumni_product_wid} = ${event_registration.product_wid}
-      ;;
-
+    relationship: many_to_many
+    sql_on: ${alumni_event_years.person_wid} = ${event_registration.person_wid} and ${alumni_event_years.alumni_product_wid} = ${event_registration.product_wid};;
   }
-
-#  join: alumni_details {
-#    required_access_grants: [developer_access]
-#    view_label: "Alumni (related to Event)"
-#    relationship: one_to_one
-#    sql_on: ${alumni_details.person_wid} = ${event_registration.person_wid} and  ${alumni_details.alumni_product_wid} = ${event_registration.product_wid};;
-#  }
 
 
   join: alumni_event {

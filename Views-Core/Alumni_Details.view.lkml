@@ -1,5 +1,4 @@
 include: "/Views-Core/*.view.lkml"
-include: "/Explore-EventRegistration/*.explore.lkml"
 
 view: alumni_event_years {
   derived_table: {
@@ -47,12 +46,13 @@ select erf.person_wid, erf.product_wid, product_brand, secondary_brand as produc
       , cidw.product_dim p, cidw.event_registration_dim erd
         where erf.product_wid = p.row_wid and erf.event_registration_wid = erd.row_wid
         and (epd.primary_pass = 'Y' or epd.primary_pass is null)
-        and p.secondary_brand = 'Black Hat USA'
+        --and p.secondary_brand = 'Black Hat USA'
         and {% condition primary_pass_name %} epd.pass_name {% endcondition %}
         ) a
         left join (select person_wid, secondary_brand as product_event, registration_date_wid, product_wid from cidw.event_registration_fact f, cidw.product_dim p where f.product_wid = p.row_wid) e
          on a.person_wid = e.person_wid and a.product_event = e.product_event and a.registration_date_wid < e.registration_date_wid and a.product_wid != e.product_wid
   ;;
+    sql_trigger_value: select max(warehouse_date_wid) from cidw.person_dim ;;
     publish_as_db_view: yes
     datagroup_trigger: basic_cache
     distribution_style: all
