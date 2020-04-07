@@ -53,9 +53,8 @@ select erf.person_wid, erf.product_wid, product_brand, secondary_brand as produc
         left join (select person_wid, secondary_brand as product_event, registration_date_wid, product_wid from cidw.event_registration_fact f, cidw.product_dim p where f.product_wid = p.row_wid) e
          on a.person_wid = e.person_wid and a.product_event = e.product_event and a.registration_date_wid < e.registration_date_wid and a.product_wid != e.product_wid
   ;;
-    sql_trigger_value: select max(warehouse_date_wid) from cidw.person_dim ;;
     publish_as_db_view: yes
-    #datagroup_trigger: basic_cache
+    datagroup_trigger: basic_cache
     distribution_style: all
     indexes: ["product_wid", "person_wid", "product_event", "registration_date_wid", "alumni_product_wid" ]
     }
