@@ -2,22 +2,25 @@ include: "/Views-Core/*.view.lkml"
 
 view: alumni_event_years {
   derived_table: {
-    sql: select person_wid, product_wid, alumni_product_wid ,primary_pass,
+    sql: select person_wid, product_wid, alumni_product_wid,
+      registration_flag, registration_date_wid, registration_type, total_collected, primary_pass,
       count( product_wid) over (partition by person_wid, alumni_product_wid) as total_alumni_events
-       from (select * from sandbox.lr$hb82j1586194886750_alumni_details  as alumni_details
+       from (select * from sandbox.lr$hbwow1586285164557_alumni_details  as alumni_details
         where {% condition primary_pass_name %} alumni_details.primary_pass {% endcondition %}) ;;
   }
   filter: primary_pass_name {
+    suggest_dimension: event_pass_dim.primary_pass_name
     type: string
   }
   dimension: pk {
+    hidden:yes
     primary_key: yes
     sql: concat(${person_wid}, ${product_wid}) ;;
   }
   dimension: person_wid {hidden:yes}
   dimension: product_wid {hidden:yes}
   dimension: alumni_product_wid {hidden:yes}
-  dimension: primary_pass {}
+  dimension: primary_pass {hidden:yes}
   dimension: total_alumni_events {
     description: "Total number of events by the same product secondary brand that this person attended"
     type: number
@@ -27,7 +30,7 @@ view: alumni_event_years {
     value_format: "0 \"Years\""
     label: "Year Count"
     description: "Count of Prior Years the user registered for the event"
-    hidden: no
+    hidden: yes
     sql: ${TABLE}.product_wid;;
   }
 }
@@ -52,14 +55,10 @@ select erf.person_wid, erf.product_wid, product_brand, secondary_brand as produc
   ;;
     sql_trigger_value: select max(warehouse_date_wid) from cidw.person_dim ;;
     publish_as_db_view: yes
-    datagroup_trigger: basic_cache
+    #datagroup_trigger: basic_cache
     distribution_style: all
     indexes: ["product_wid", "person_wid", "product_event", "registration_date_wid", "alumni_product_wid" ]
     }
-    filter: primary_pass_name {
-      type: string
-    }
-
     dimension: fact_alumni_key {
       primary_key: yes
       type: string

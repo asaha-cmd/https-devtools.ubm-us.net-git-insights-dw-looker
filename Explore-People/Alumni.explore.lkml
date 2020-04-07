@@ -25,7 +25,7 @@ explore: alumni_brand {
   join: alumni_first_reg_brand {
     required_access_grants: [insights_access]
     from: day_dim
-    view_label: "Alumni (Brand)"
+    view_label: "Alumni (Total by Brand)"
     relationship: one_to_one
     sql_on: ${alumni_brand.first_reg_date_wid} = ${alumni_first_reg_brand.row_wid} ;;
   }
@@ -33,14 +33,14 @@ explore: alumni_brand {
   join: alumni_last_reg_brand {
     required_access_grants: [insights_access]
     from: day_dim
-    view_label: "Alumni (Brand)"
+    view_label: "Alumni (Total by Brand)"
     relationship: one_to_one
     sql_on: ${alumni_brand.last_reg_date_wid} = ${alumni_last_reg_brand.row_wid} ;;
   }
 }
 explore: alumni_event {
   view_name: alumni_event
-  view_label: "Alumni (Event)"
+  view_label: "Alumni (Total by Event)"
   hidden: yes
 
   #join: person {
@@ -62,7 +62,7 @@ explore: alumni_event {
   join: alumni_first_reg_event {
     required_access_grants: [insights_access]
     from: day_dim
-    view_label: "Alumni (Event)"
+    view_label: "Alumni (Total by Event)"
     relationship: one_to_one
     sql_on: ${alumni_event.first_reg_date_wid} = ${alumni_first_reg_event.row_wid} ;;
   }
@@ -70,7 +70,7 @@ explore: alumni_event {
   join: alumni_last_reg_event {
     required_access_grants: [insights_access]
     from: day_dim
-    view_label: "Alumni (Event)"
+    view_label: "Alumni (Total by Event)"
     relationship: one_to_one
     sql_on: ${alumni_event.last_reg_date_wid} = ${alumni_last_reg_event.row_wid} ;;
   }

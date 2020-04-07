@@ -173,11 +173,17 @@ explore: event_registration {
 
   join: alumni_event_years {
     required_access_grants: [developer_access]
-    view_label: "Alumni (related to Event)"
+    view_label: "Alumni (Filter Definitions)"
     relationship: many_to_many
     sql_on: ${alumni_event_years.person_wid} = ${event_registration.person_wid} and ${alumni_event_years.alumni_product_wid} = ${event_registration.product_wid};;
   }
 
+  join: alumni_details {
+    required_access_grants: [developer_access]
+    view_label: "Alumni (related to Event)"
+    relationship: many_to_many
+    sql_on: ${alumni_details.person_wid} = ${event_registration.person_wid} and ${alumni_details.alumni_product_wid} = ${event_registration.product_wid};;
+  }
 
   join: alumni_event {
     required_access_grants: [insights_access]

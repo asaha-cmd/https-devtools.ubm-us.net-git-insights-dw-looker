@@ -24,6 +24,11 @@ view: event_pass_dim {
     sql: CASE WHEN ${TABLE}.primary_pass = 'Y' THEN true ELSE false END ;;
   }
 
+  dimension: primary_pass_name {
+    type: string
+    sql: CASE WHEN ${TABLE}.primary_pass = 'Y' THEN ${TABLE}.pass_name ELSE null END;;
+  }
+
   dimension: product_wid {
     hidden: yes
     type: number
