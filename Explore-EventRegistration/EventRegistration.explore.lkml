@@ -172,7 +172,6 @@ explore: event_registration {
   extends: [alumni_brand,alumni_event,lead_scan,session_scan, demographics_historic]
 
   join: alumni_event_years {
-    required_access_grants: [developer_access]
     view_label: "Alumni (Filter Definitions)"
     relationship: many_to_many
     sql_on: ${alumni_event_years.person_wid} = ${event_registration.person_wid} and ${alumni_event_years.alumni_product_wid} = ${event_registration.product_wid};;
@@ -180,13 +179,12 @@ explore: event_registration {
 
   join: alumni_details {
     required_access_grants: [developer_access]
-    view_label: "Alumni (related to Event)"
+    view_label: "Alumni (related to Event) DEV Access Only"
     relationship: many_to_many
     sql_on: ${alumni_details.person_wid} = ${event_registration.person_wid} and ${alumni_details.alumni_product_wid} = ${event_registration.product_wid};;
   }
 
   join: alumni_event {
-    required_access_grants: [insights_access]
     from: alumni_event
     view_label: "Alumni (Total by Event)"
     #fields: [ALL_FIELDS*,-alumni.alumni_brand* ]
@@ -194,7 +192,6 @@ explore: event_registration {
     sql_on: ${alumni_event.alumni_level} = 'Event' and ${alumni_event.person_wid} = ${person.person_wid} and ${alumni_event.alumni_name} = ${product.product_subbrand} ;;
   }
   join: alumni_brand {
-    required_access_grants: [insights_access]
     from: alumni_brand
     view_label: "Alumni (Total by Brand)"
     #fields: [ALL_FIELDS*,-alumni.alumni_event* ]

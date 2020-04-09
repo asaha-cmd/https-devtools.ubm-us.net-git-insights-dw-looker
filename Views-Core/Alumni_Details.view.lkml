@@ -5,8 +5,24 @@ view: alumni_event_years {
     sql: select person_wid, product_wid, alumni_product_wid,
       registration_flag, registration_date_wid, registration_type, total_collected, primary_pass,
       count( product_wid) over (partition by person_wid, alumni_product_wid) as total_alumni_events
-       from (select * from sandbox.lr$hbwow1586285164557_alumni_details  as alumni_details
-        where {% condition primary_pass_name %} alumni_details.primary_pass {% endcondition %}) ;;
+       from (select * from sandbox.hb_customer_insights_alumni_details  as alumni_details
+        where {% condition primary_pass_name %} alumni_details.primary_pass {% endcondition %}
+        and {% condition registration_flag %} alumni_details.registration_flag {% endcondition %}
+        and {% condition registration_type %} alumni_details.registration_type {% endcondition %}
+        and {% condition total_collected %} alumni_details.total_collected {% endcondition %}
+        );;
+  }
+  filter: registration_flag {
+    suggest_dimension: event_registration.registration_flag
+    type: string
+  }
+  filter: registration_type {
+    suggest_dimension: event_registration_dim.registration_type
+    type: string
+  }
+  filter: total_collected {
+    type: number
+    suggest_dimension: event_registration.total_collected
   }
   filter: primary_pass_name {
     suggest_dimension: event_pass_dim.primary_pass_name
@@ -15,12 +31,12 @@ view: alumni_event_years {
   dimension: pk {
     hidden:yes
     primary_key: yes
-    sql: concat(${person_wid}, ${product_wid}) ;;
+    sql: concat(${person_wid}, ${product_wid}, ${alumni_product_wid}) ;;
   }
   dimension: person_wid {hidden:yes}
   dimension: product_wid {hidden:yes}
   dimension: alumni_product_wid {hidden:yes}
-  dimension: primary_pass {hidden:yes}
+  dimension: primary_pass {hidden:no}
   dimension: total_alumni_events {
     description: "Total number of events by the same product secondary brand that this person attended"
     type: number
@@ -126,7 +142,7 @@ select erf.person_wid, erf.product_wid, product_brand, secondary_brand as produc
       value_format: "0 \"Years\""
       label: "Year Count"
       description: "Count of Prior Years the user registered for the event"
-      hidden: no
+      hidden: yes
       sql: ${TABLE}.event_name;;
 
     }

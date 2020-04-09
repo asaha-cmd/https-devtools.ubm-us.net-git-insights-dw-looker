@@ -23,7 +23,6 @@ explore: alumni_brand {
   #}
 
   join: alumni_first_reg_brand {
-    required_access_grants: [insights_access]
     from: day_dim
     view_label: "Alumni (Total by Brand)"
     relationship: one_to_one
@@ -31,7 +30,6 @@ explore: alumni_brand {
   }
 
   join: alumni_last_reg_brand {
-    required_access_grants: [insights_access]
     from: day_dim
     view_label: "Alumni (Total by Brand)"
     relationship: one_to_one
