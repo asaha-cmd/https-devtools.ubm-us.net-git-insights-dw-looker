@@ -1,4 +1,5 @@
 view: company_revenue_demo_fact {
+  sql_table_name: cidw.company_revenue_demo_fact ;;
 
   dimension: audience_group_wid {
     type: number
