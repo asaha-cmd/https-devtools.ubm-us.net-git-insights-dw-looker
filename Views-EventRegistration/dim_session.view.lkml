@@ -33,7 +33,7 @@ view: dim_session {
     sql: ${TABLE}.discipline_2 ;;
   }
 
-  dimension_group: end {
+  dimension_group: session_end {
     type: time
     timeframes: [
       raw,
@@ -65,6 +65,11 @@ view: dim_session {
     sql: ${TABLE}.session_code ;;
   }
 
+  dimension: description {
+    type: string
+    sql: ${TABLE}.description ;;
+  }
+
   dimension: session_date_wid {
     hidden: yes
     type: number
@@ -88,7 +93,7 @@ view: dim_session {
     sql: ${TABLE}.session_track_2 ;;
   }
 
-  dimension_group: start {
+  dimension_group: session_start {
     type: time
     timeframes: [
       raw,
