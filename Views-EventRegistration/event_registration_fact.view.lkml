@@ -86,6 +86,13 @@ view: event_registration_fact {
     sql: ${TABLE}.registration_date_wid ;;
   }
 
+  dimension: paid_date_wid {
+    hidden: yes
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.paid_date_wid ;;
+  }
+
   dimension: registration_flag {
     view_label: "Event Registration Details"
     type: string
