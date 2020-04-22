@@ -92,5 +92,21 @@ view: event_reg_pass_fact {
 
   measure: count {
     type: count
+    drill_fields: [user_pass_details*]
+    link: {label: "Explore Registrations by Country" url: "{{ link }}&sorts=person.country+desc&limit=20" }
+  }
+  set: user_pass_details {
+    fields: [
+      person.country,
+     #person.company,
+     #person.email_address_domain,
+      event_pass_dim.pass_name,
+      event_pass_dim.pass_type,
+      event_reg_pass_fact.count,
+      event_reg_pass_fact.sum_before_discount_amount,
+      event_reg_pass_fact.sum_discount_amount,
+      event_reg_pass_fact.sum_calculated_amount,
+      event_registration.sum_total_collected]
+
   }
 }
