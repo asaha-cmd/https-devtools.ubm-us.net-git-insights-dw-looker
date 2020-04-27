@@ -69,6 +69,13 @@ explore: event_registration {
     sql_on: ${event_registration.registration_date_wid} = ${registration.row_wid} ;;
   }
 
+  join: paid {
+    from: day_dim
+    view_label: "Event Registration"
+    relationship: one_to_one
+    sql_on: ${event_registration.paid_date_wid} = ${paid.row_wid} ;;
+  }
+
   join: checkin {
     from: day_dim
     view_label: "Event Registration"
