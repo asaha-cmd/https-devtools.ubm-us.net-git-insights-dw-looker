@@ -26,11 +26,13 @@ view: dim_session {
   dimension: discipline_1 {
     type: string
     sql: ${TABLE}.discipline_1 ;;
+    drill_fields: [title]
   }
 
   dimension: discipline_2 {
     type: string
     sql: ${TABLE}.discipline_2 ;;
+    drill_fields: [title]
   }
 
   dimension_group: session_end {
@@ -57,6 +59,7 @@ view: dim_session {
   dimension: program {
     type: string
     sql: ${TABLE}.program ;;
+    drill_fields: [title]
   }
 
   dimension: session_code {
@@ -78,7 +81,7 @@ view: dim_session {
   }
 
   dimension: session_length {
-    hidden: yes
+    hidden: no
     type: number
     sql: ${TABLE}.session_length ;;
   }
@@ -86,11 +89,13 @@ view: dim_session {
   dimension: session_track_1 {
     type: string
     sql: ${TABLE}.session_track_1 ;;
+    drill_fields: [title, discipline_1]
   }
 
   dimension: session_track_2 {
     type: string
     sql: ${TABLE}.session_track_2 ;;
+    drill_fields: [title, discipline_1, discipline_2]
   }
 
   dimension_group: session_start {

@@ -5,7 +5,7 @@ explore: session_schedule {
   hidden: no
   view_name: fact_scheduled_session
   group_label: "Event Registration"
-  label: "Session Schedule"
+  label: "Session Data"
   description: "Supports exploration and analysis of Session Builder Sessions"
 
   join: product {
@@ -28,17 +28,17 @@ explore: session_schedule {
   }
 
   join: session {
-    view_label: "Session Schedule"
+    view_label: "Session Data"
     from: dim_session
     relationship: many_to_one
     sql_on: ${fact_scheduled_session.session_wid} = ${session.row_wid} ;;
   }
 
-  join: schedule_date {
-    view_label: "Session Schedule"
+  join: schedule {
+    view_label: "Session Data"
     from:day_dim
     relationship: one_to_one
-    sql_on: ${fact_scheduled_session.schedule_date_wid} = ${schedule_date.row_wid} ;;
+    sql_on: ${fact_scheduled_session.schedule_date_wid} = ${schedule.row_wid} ;;
   }
 
 

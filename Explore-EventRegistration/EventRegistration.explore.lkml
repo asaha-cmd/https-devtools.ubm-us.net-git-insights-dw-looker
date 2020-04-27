@@ -176,7 +176,7 @@ explore: event_registration {
     relationship: one_to_one
     sql_on: ${data_source.row_wid} = ${event_registration.data_source_wid} ;;
   }
-  extends: [alumni_brand,alumni_event,lead_scan,session_scan, demographics_historic]
+  extends: [alumni_brand,alumni_event,lead_scan,session_scan, demographics_historic, session_schedule]
 
   join: alumni_event_years {
     view_label: "Alumni (Filter Definitions)"
@@ -216,13 +216,16 @@ explore: event_registration {
   }
 
   join: fact_lead_scan_activity {
-    view_label: "Lead Scan"
     relationship: one_to_many
     sql_on:  ${fact_lead_scan_activity.person_wid} = ${person.person_wid} and ${fact_lead_scan_activity.product_wid} = ${product.row_wid} ;;
   }
   join: fact_session_scan_activity {
-    view_label: "Session Scan"
     relationship: one_to_many
     sql_on:  ${fact_session_scan_activity.person_wid} = ${person.person_wid} and ${fact_session_scan_activity.product_wid} = ${product.row_wid} ;;
+  }
+
+  join: fact_scheduled_session {
+    relationship: one_to_many
+    sql_on:  ${fact_scheduled_session.person_wid} = ${person.person_wid} and ${fact_scheduled_session.product_wid} = ${product.row_wid} ;;
   }
 }
