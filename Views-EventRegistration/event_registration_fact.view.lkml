@@ -192,6 +192,13 @@ view: event_registration_fact {
     sql: datediff('week',${registration.calendar_date}, ${product_start.calendar_date}) ;;
     }
 
+  dimension: weekout_paid_date {
+    view_label: "Event Registration Details"
+    label: "Weeks Out - Paid Date"
+    type:  number
+    description: "Weeks out Difference from Paid Date to start of event"
+    sql:  datediff('week',${paid.calendar_date}, ${product_start.calendar_date}) ;;
+  }
 
   dimension: warehouse_date_wid {
     hidden: yes

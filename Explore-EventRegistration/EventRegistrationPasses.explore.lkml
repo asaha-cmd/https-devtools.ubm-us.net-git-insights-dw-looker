@@ -90,4 +90,10 @@ explore: event_registration_passes {
     sql_on: ${event_registration.cancellation_date_wid} = ${cancellation.row_wid} ;;
   }
 
+  join: paid {
+    from: day_dim
+    view_label: "Event Registration"
+    relationship: one_to_one
+    sql_on: ${event_registration.registration_date_wid} = ${paid.row_wid} ;;
+  }
 }
